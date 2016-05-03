@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <title>Log in</title>
+    <style>
+
+    input {
+      padding: 4px 5px;
+    }
+
+    .login-container{
+      position: relative;
+      width: 300px;
+      margin: 80px auto;
+      padding: 20px 40px 40px;
+      text-align: center;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+
+
+      #loginBtn{
+        margin-top: 15px;
+        padding: 10px 20px;
+
+      }
+      h4{
+        color: gray;
+      }
+    </style>
+  </head>
+  <body>
+  <script type="text/javascript" src="../JS/createCustomer.js"></script>
+    <div class="container">
+	<div class="login-container">
+            <div class="form-box">
+                <form action="" method="POST">
+                  <h4>Create customer</h4>
+                  <div class="inputs">
+
+                    <input id="firstName" name="firstName" type="text" placeholder="First Name">
+                    <br><br>
+                    <input id="lastName" name="lastName" type="text" placeholder="Last Name">
+                    <br><br>
+                    <input id="email" name="email" type="text" placeholder="E-mail">
+                    <br><br>
+                    <input id="password" type="password" placeholder="Password">
+                    <br><br>
+                    <input id="adress" name="adress" type="text" placeholder="Adress">
+                    <br><br>
+                    <input id="zipCode" name="zipCode" type="text" placeholder="ZIP code">
+                    <br><br>
+                    <input id="city" name="city" type="text" placeholder="City">
+                    <button id="loginBtn"class="btn btn-info btn-block login" type="submit">Create</button>
+                </form>
+              </div>
+
+            </div>
+        </div>
+
+</div>
+  </body>
+</html>
