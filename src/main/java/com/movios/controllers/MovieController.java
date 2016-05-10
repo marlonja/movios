@@ -20,13 +20,12 @@ public class MovieController {
 	@Autowired
 	private MovieService movieService;
 
-	/*
-	 * @CrossOrigin
-	 * 
-	 * @RequestMapping(value = "/movies/", method = RequestMethod.POST) public
-	 * void createMovie(@RequestBody MovieModel movieModel) {
-	 * movieService.saveMovie(movieModel); }
-	 */
+	
+	 @CrossOrigin
+	 @RequestMapping(value = "/movies/", method = RequestMethod.POST) public
+	 void createMovie(@RequestBody MovieModel movieModel) {
+	 movieService.saveMovie(movieModel); }
+	 
 
 	public MovieService getMovieService() {
 		return movieService;
