@@ -24,4 +24,8 @@ public class MovieService {
 	public ArrayList<MovieModel> readAllMovies() {
 		return (ArrayList<MovieModel>) movieRepository.findAll();
 	}
+	
+	public void deleteMovie(Long id){
+		movieRepository.delete(id);
+	}
 }

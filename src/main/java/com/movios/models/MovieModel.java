@@ -23,7 +23,13 @@ public class MovieModel implements Serializable {
 
 	private String length;
 
-	private String format;
+	private String genre;
+	
+	private String price;
+	
+	private String release_year;
+	
+	private String synopsis;
 
 	@Lob
 	@Column(length = 100000)
@@ -57,12 +63,37 @@ public class MovieModel implements Serializable {
 		this.length = length;
 	}
 
-	public String getFormat() {
-		return format;
+
+	public String getGenre() {
+		return genre;
 	}
 
-	public void setFormat(String format) {
-		this.format = format;
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getRelease_year() {
+		return release_year;
+	}
+
+	public void setRelease_year(String release_year) {
+		this.release_year = release_year;
+	}
+
+	public String getSynopsis() {
+		return synopsis;
+	}
+
+	public void setSynopsis(String synopsis) {
+		this.synopsis = synopsis;
 	}
 
 	public Long getId() {

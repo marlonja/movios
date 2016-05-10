@@ -41,4 +41,16 @@ public class MovieController {
 	public ResponseEntity<ArrayList<MovieModel>> getAll() {
 		return new ResponseEntity<ArrayList<MovieModel>>(movieService.readAllMovies(), HttpStatus.OK);
 	}
+	
+	@CrossOrigin
+	@RequestMapping(value = "/movies/{id}", method = RequestMethod.DELETE)
+	public void deleteMovie(@PathVariable Long id){
+		movieService.deleteMovie(id);
+	}
+	
+	@CrossOrigin
+	@RequestMapping(value = "/movies/{id}", method = RequestMethod.PUT)
+	public void updateMovie(@PathVariable Long id, @RequestBody MovieModel movieModel){
+		movieService.saveMovie(movieModel);
+	}
 }

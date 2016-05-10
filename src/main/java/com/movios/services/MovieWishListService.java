@@ -24,4 +24,6 @@ public class MovieWishListService {
 	public ArrayList<MovieWishListModel> readAllMovieWishLists() {
 		return (ArrayList<MovieWishListModel>) movieWishListRepository.findAll();
 	}
+	
+	
 }
