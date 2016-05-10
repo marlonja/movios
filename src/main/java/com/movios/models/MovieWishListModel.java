@@ -24,11 +24,9 @@ public class MovieWishListModel implements Serializable {
 	@JoinColumn(name = "user_id")
 	private UserModel userModel;
 
-	private ArrayList<String> movie_wish_list;
-
-	public ArrayList<String> getMovie_wish_list() {
-		return movie_wish_list;
-	}
+	@ManyToOne
+	@JoinColumn(name = "movie_id")
+	private MovieModel movieModel;
 
 	public UserModel getUserModel() {
 		return userModel;
@@ -38,12 +36,18 @@ public class MovieWishListModel implements Serializable {
 		this.userModel = userModel;
 	}
 
+
+	public MovieModel getMovieModel() {
+		return movieModel;
+	}
+
+	public void setMovieModel(MovieModel movieModel) {
+		this.movieModel = movieModel;
+	}
+
 	public Long getId() {
 		return id;
 	}
 
-	public void setMovie_wish_list(ArrayList<String> movie_wish_list) {
-		this.movie_wish_list = movie_wish_list;
-	}
 
 }

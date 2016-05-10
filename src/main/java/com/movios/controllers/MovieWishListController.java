@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.movios.models.MovieModel;
 import com.movios.models.MovieWishListModel;
 import com.movios.services.MovieWishListService;
 
@@ -21,19 +22,19 @@ public class MovieWishListController {
 	private MovieWishListService movieWishListService;
 
 	@CrossOrigin
-	@RequestMapping(value = "/moveWishLlist/", method = RequestMethod.POST)
+	@RequestMapping(value = "/movieWishList/", method = RequestMethod.POST)
 	public void createMovieWishList(@RequestBody MovieWishListModel movieWishListModel) {
 		movieWishListService.saveMovieWishList(movieWishListModel);
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/moveWishLlist/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/movieWishList/{id}", method = RequestMethod.GET)
 	public ResponseEntity<MovieWishListModel> readMovieWishList(@PathVariable Long id) {
 		return new ResponseEntity<MovieWishListModel>(movieWishListService.readMovieWishLists(id), HttpStatus.OK);
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/moveWishLlist/", method = RequestMethod.GET)
+	@RequestMapping(value = "/movieWishList/", method = RequestMethod.GET)
 	public ResponseEntity<ArrayList<MovieWishListModel>> getAll() {
 		return new ResponseEntity<ArrayList<MovieWishListModel>>(movieWishListService.readAllMovieWishLists(), HttpStatus.OK);
 	}
