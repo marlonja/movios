@@ -1,0 +1,131 @@
+<!DOCTYPE>
+<html>
+<title>Movio</title>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body ng-app="test" ng-controller="mainControl">
+	<script type="text/javascript" src="../JS/getMovies.js"></script>
+
+
+	<div id="wrapper">
+				<div id="header">
+					<div id="search" class="text-center">
+						<input type="text" size="40" placeholder="Search...">
+						<input type="button" id="searchBtn" value="OK">
+					</div>
+					<div id="login">
+					 <div class="dropdown">
+						<button type="button" data-toggle="dropdown" id="userIcon"><span class="glyphicon glyphicon-user"></span></button>
+
+						<ul class="dropdown-menu">
+						  <li><a href="../HTML/logIn.html">Login</a></li>
+						  <li><a href="../HTML/createCustomer.html">Create Account</a></li>
+						</ul>
+						<br><br>
+
+						<div id="cart">
+						<button type="button" id="cartIcon"><span class="glyphicon glyphicon-shopping-cart"></span></button>
+						<input type="button" id="checkout" value="Till kassan">
+							<div id="cartBody">
+
+							</div>
+						</div>
+
+					</div>
+
+
+					</div>
+					<div id="left">
+					<img id="logo" src="../PICS/logo.jpg"/>
+					<ul>
+						<li>
+							<a href="movios.html">Visa alla filmer</a>
+						</li>
+						<li>
+							<a href="#">Action</a>
+						</li>
+						<li>
+							<a href="#">Drama</a>
+						</li>
+						<li>
+							<a href="#">Thriller</a>
+						</li>
+						<li>
+							<a href="#">Komedi</a>
+						</li>
+						<li>
+							<a href="#">Sci-Fi</a>
+						</li>
+						<li>
+							<a href="#">Äventyr</a>
+						</li>
+						<li>
+							<a href="#">Romantik</a>
+						</li>
+						<li>
+							<a href="#">Barn</a>
+						</li>
+						<li>
+							<a href="#">Erbjudanden</a>
+						</li>
+						<li>
+							<a href="#">Topplistor</a>
+						</li>
+						<li>
+							<a href="index.html">Hem</a>
+						</li>
+				</ul>
+				</div>
+			</div>
+
+		<div id="container">
+			<div id="middle" align="center">
+				<h1>Kassa-Betalning</h1>
+
+				<table>
+					<tr>
+
+						<th>Title</th>
+						<th>Price</th>
+						<th>Add/Remove</th>
+						<th>Summa</th>
+
+					</tr>
+
+					<tbody>
+						<tr>
+							<td>{{ cart.title }}</td>
+							<td>{{ cart.price }}</td>
+							<td>
+								<button ng-click="addItemFromCart()"><span class="glyphicon glyphicon-plus"></span></button>
+								{{movieCount}}
+								<button ng-click="removeItemFromCart()"><span class="glyphicon glyphicon-minus"></span></button>
+							</td>
+							<td></td>
+							<td><button>Betala</button></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<br><br><br>
+
+		<div id="footer"><a href="../index.html">Home</a> | About | &copy 2016 movio.se</div>
+
+	</div>
+
+
+</body>
+</html>
