@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.movios.controllers.PasswordController;
 import com.movios.models.ModelExceptions.InvaldPasswordException;
 
 @Table(name = "users")
@@ -28,14 +29,14 @@ public class UserModel implements Serializable {
 
 	private String first_name;
 	private String last_name;
-	private String user_name;
 	private String password;
 	private String social_security;
 	private String user_type;
 	private String email;
-	private String age;
+	private String address;
 	private String zip_code;
 	private String city;
+	
 
 	// START OF SETTERS AND GETTERS
 
@@ -63,21 +64,12 @@ public class UserModel implements Serializable {
 		this.last_name = last_name;
 	}
 
-	public String getUser_name() {
-		return user_name;
-	}
-
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
-	}
-
 	public String getPassword() {
 		return password;
 	}
 
-	////////// passwordValidation ////////////
-	public void setPassword(String password) {
-		passwordValidation();
+		public void setPassword(String password) {
+		PasswordController.validatePassword(password);
 		this.password = password;
 	}
 
@@ -105,12 +97,12 @@ public class UserModel implements Serializable {
 		this.email = email;
 	}
 
-	public String getAge() {
-		return age;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAge(String age) {
-		this.age = age;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getZip_code() {
@@ -133,56 +125,5 @@ public class UserModel implements Serializable {
 		return id;
 	}
 
-	// END OF SETTERS AND GETTERS
-
-	private boolean passwordLengthShorterThanSix() {
-
-		boolean ShorterThanSix = password.length() < 6;
-
-		return ShorterThanSix;
-	}
-
-	private boolean passwordLengthLongerThanTwenty() {
-
-		boolean LongerThanTwenty = password.length() > 20;
-
-		return LongerThanTwenty;
-	}
-
-	private boolean passwordContainsInvalidCharacter() {
-
-		// \\w = [a-zA-Z_0-9]
-		boolean hasInvalidCharacters = Pattern.matches("[\\w[_-]]+", password);
-
-		return !hasInvalidCharacters;
-	}
-
-	private void passwordValidation() {
-		boolean passwordHasFailed = false;
-		StringBuilder passwordMessageBuilder = new StringBuilder();
-
-		if (passwordLengthShorterThanSix()) {
-			passwordHasFailed = true;
-			passwordMessageBuilder.append("Password shorter than 6\n");
-		} else if (passwordLengthLongerThanTwenty()) {
-			passwordHasFailed = true;
-			passwordMessageBuilder.append("Password longer than 20\n");
-		}
-
-		if (passwordContainsInvalidCharacter()) {
-			passwordHasFailed = true;
-			passwordMessageBuilder.append("Password contains invalid characters\n");
-		}
-
-		if (passwordHasFailed) {
-			try {
-				throw new InvaldPasswordException(passwordMessageBuilder.toString());
-			} catch (InvaldPasswordException e) {
-				System.out.println(e.toString());
-			}
-		}
-
-		// if nothing fails
-		return;
-	}
+	
 }
