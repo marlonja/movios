@@ -2,17 +2,26 @@
 <html>
   <head>
     <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <title>Log in</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+      <title>Movios</title>
     <style>
 
-    input {
-      padding: 4px 5px;
-    }
+        input.ng-invalid {
+            border-color: pink;
 
+        }
+        input.ng-valid {
+            border-color: lightgreen;
+        }
+        input {
+            padding: 4px 5px;
+            background-color: white;
+        }
     .login-container{
       position: relative;
       width: 300px;
@@ -34,31 +43,68 @@
       }
     </style>
   </head>
-  <body>
+  <body ng-app="validationApp" ng-controller="mainController">
   <script type="text/javascript" src="../JS/createCustomer.js"></script>
-    <div class="container">
+  <script type="text/javascript" src="../JS/checkCustomerValid.js"></script>
+
+  <div class="container">
 	<div class="login-container">
             <div class="form-box">
-                <form action="" method="POST">
-                  <h4>Create customer</h4>
-                  <div class="inputs">
+                <form name="userForm" ng-submit="submitForm()" novalidate>
 
-                    <input id="firstName" name="firstName" type="text" placeholder="First Name">
-                    <br><br>
-                    <input id="lastName" name="lastName" type="text" placeholder="Last Name">
-                    <br><br>
-                    <input id="email" name="email" type="text" placeholder="E-mail">
-                    <br><br>
-                    <input id="password" type="password" placeholder="Password">
-                    <br><br>
-                    <input id="address" name="address" type="text" placeholder="Address">
-                    <br><br>
-                    <input id="zipCode" name="zipCode" type="text" placeholder="ZIP code">
-                    <br><br>
-                    <input id="city" name="city" type="text" placeholder="City">
-                    <button id="loginBtn"class="btn btn-info btn-block login" type="submit">Create</button>
+                    <!-- FIRST NAME -->
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.firstName.$invalid && !userForm.firstName.$pristine }">
+                        <label>Förnamn</label>
+                        <input type="text" name="firstName" class="form-control" ng-model="user.firstName" required>
+                        <p ng-show="userForm.firstName.$invalid && !userForm.firstName.$pristine" class="help-block">Skriv in ditt förnamn.</p>
+                    </div>
+
+                    <!-- LAST NAME -->
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+                        <label>Efternamn</label>
+                        <input type="text" name="lastName" class="form-control" ng-model="user.lastName" required>
+                        <p ng-show="userForm.lastName.$invalid && !userForm.lastName.$pristine" class="help-block">Skriv in ditt efternamn</p>
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" ng-model="user.email" required>
+                        <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Skriv in en email-adress</p>
+                    </div>
+
+                    <!-- PASSWORD -->
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" ng-model="user.password" required>
+                        <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block">Skriv in lösenord.</p>
+                    </div>
+
+                    <!-- ADDRESS -->
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.address.$invalid && !userForm.address.$pristine }">
+                        <label>Adress</label>
+                        <input type="text" name="address" class="form-control" ng-model="user.address" required>
+                        <p ng-show="userForm.address.$invalid && !userForm.address.$pristine" class="help-block">Skriv in din adress.</p>
+                    </div>
+
+                    <!-- ZIPCODE -->
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.zipCode.$invalid && !userForm.zipCode.$pristine }">
+                        <label>Post NR</label>
+                        <input type="text" name="zipCode" class="form-control" ng-model="user.zipCode" required>
+                        <p ng-show="userForm.zipCode.$invalid && !userForm.zipCode.$pristine" class="help-block">Skriv in ditt post nr.</p>
+                    </div>
+
+                    <!-- CITY -->
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.city.$invalid && !userForm.city.$pristine }">
+                        <label>City</label>
+                        <input type="text" name="city" class="form-control" ng-model="user.city" required>
+                        <p ng-show="userForm.city.$invalid && !userForm.city.$pristine" class="help-block">Skriv in stad.</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">OK</button>
+
                 </form>
-              </div>
+            </div>
 
             </div>
         </div>

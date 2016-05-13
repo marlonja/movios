@@ -18,8 +18,8 @@ app.controller('mainControl', function($http, $scope, $compile){
         title: $scope.addTitle,
         length: $scope.addLength,
         release_year: $scope.addYear,
-				synopsis: $scope.addSynopsis,
-				genre: $scope.addGenre,
+        synopsis: $scope.addSynopsis,
+		genre: $scope.addGenre,
         price: $scope.addPrice
 
     }).success(function(){
