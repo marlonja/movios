@@ -20,110 +20,88 @@ import com.movios.models.ModelExceptions.InvaldPasswordException;
 @SuppressWarnings("serial")
 @Entity
 public class UserModel implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	@OneToMany(mappedBy = "userModel", cascade = CascadeType.ALL)
-	private List<MovieWishListModel> wishListModels = new ArrayList<MovieWishListModel>();
+    @OneToMany(mappedBy = "userModel", cascade = CascadeType.ALL)
+    private List<MovieWishListModel> wishListModels = new ArrayList<MovieWishListModel>();
 
-	private String first_name;
-	private String last_name;
-	private String password;
-	private String social_security;
-	private String user_type;
-	private String email;
-	private String address;
-	private String zip_code;
-	private String city;
-	
+    private String first_name;
+    private String last_name;
+    private String email;
+    private String password;
+    private String address;
+    private Integer zip_code;
+    private String city;
 
-	// START OF SETTERS AND GETTERS
+    public Long getId() {
+        return id;
+    }
 
-	public List<MovieWishListModel> getWishListModels() {
-		return wishListModels;
-	}
+    public String getFirst_name() {
 
-	public void setWishListModels(List<MovieWishListModel> wishListModels) {
-		this.wishListModels = wishListModels;
-	}
+        return first_name;
+    }
 
-	public String getFirst_name() {
-		return first_name;
-	}
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
+    public String getLast_name() {
+        return last_name;
+    }
 
-	public String getLast_name() {
-		return last_name;
-	}
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-		public void setPassword(String password) {
-		PasswordController.validatePassword(password);
-		this.password = password;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public String getSocial_security() {
-		return social_security;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public void setSocial_security(String social_security) {
-		this.social_security = social_security;
-	}
+    public Integer getZip_code() {
+        return zip_code;
+    }
 
-	public String getUser_type() {
-		return user_type;
-	}
+    public void setZip_code(Integer zip_code) {
+        this.zip_code = zip_code;
+    }
 
-	public void setUser_type(String user_type) {
-		this.user_type = user_type;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public List<MovieWishListModel> getWishListModels() {
+        return wishListModels;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setWishListModels(List<MovieWishListModel> wishListModels) {
+        this.wishListModels = wishListModels;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public String getZip_code() {
-		return zip_code;
-	}
-
-	public void setZip_code(String zip_code) {
-		this.zip_code = zip_code;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	
+    public void setPassword(String password) {
+        PasswordController.validatePassword(password);
+        this.password = password;
+    }
 }

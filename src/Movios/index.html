@@ -5,151 +5,153 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="CSS/stylesheet.css"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body ng-app="test" ng-controller="mainControl">
-	<script type="text/javascript" src="JS/getMovies.js"></script>
+<script type="text/javascript" src="JS/getMovies.js"></script>
 
 
-	<div id="wrapper">
-			<div id="header">
-					<div id="search" class="text-center">
-						<input type="text" size="40" ng-model="search">						
-					</div>
-					<div id="login">
-					 <div class="dropdown">
-						<span class="glyphicon glyphicon-user" data-toggle="dropdown" id="userIcon"></span>
+<div id="wrapper">
+	<div id="header">
+		<div id="search" class="text-center">
+			<input type="text" size="40" ng-model="search">
+		</div>
+		<div id="login">
+			<div class="dropdown">
+				<span class="glyphicon glyphicon-user" data-toggle="dropdown" id="userIcon"></span>
 
-						<ul class="dropdown-menu">
-						  <li><a href="HTML/logIn.html">Logga in</a></li>
-						  <li><a href="HTML/createCustomer.html">Skapa konto</a></li>
-						</ul>
-						<br><br>
+				<ul class="dropdown-menu">
+					<li><a href="HTML/logIn.html">Logga in</a></li>
+					<li><a href="HTML/createCustomer.html">Skapa konto</a></li>
+				</ul>
+				<br><br>
 
-						<div id="cart">					
-								<span class="glyphicon glyphicon-shopping-cart" id="cartIcon" ng-click="hideOrShowWhenGoingToCart = true; showCart()"></span>
-					
-							<div id="cartBody"></div>
-						</div>
+				<div id="cart">
+					<span class="glyphicon glyphicon-shopping-cart" id="cartIcon" ng-click="hideOrShowWhenGoingToCart = true; showCart()"></span>
 
-					</div>
-
-					</div>
-					
-			</div>
-			
-			<div id="meny">
-				<nav class="navbar navbar">
-				  <div class="container-fluid">
-					<div class="navbar-header">
-					  <a class="navbar-brand" href="index.html">Movios</a>
-					</div>
-					<ul class="nav navbar-nav">
-					  <li class="active"><a href="#">Om oss</a></li>
-					  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Browse movies <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-						  <!-- <li><a href="#">Show all</a></li> -->
-						  <li><a href="HTML/action.html">Action</a></li>
-						  <!-- <li><a href="#">Drama</a></li> -->
-						</ul>
-					  </li>
-					  <li><a href="#">News</a></li>
-					  <li><a href="#">Contact</a></li>
-					</ul>
-				  </div>
-				</nav>
-			</div>
-			<br><br><br>
-
-		<div id="container" ng-hide="hideOrShowWhenGoingToCart">
-			<div id="middle" align="center">
-				<table id="listAllMovies">
-					<tr>
-						<th>Cover</th>
-						<th>Title</th>
-						<th>Length</th>
-						<th>Release year</th>
-						<th>Genre</th>
-						<th>Price</th>
-					</tr>
-
-					<tbody ng-repeat="x in movies | filter:search">
-						<tr>
-							<td><img height="120" width="80" src="data:image/JPEG;base64,{{x.cover}}"/></td>
-							<td>{{ x.title }}</td>
-							<td>{{ x.length }}</td>
-							<td>{{ x.release_year }}</td>
-							<td>{{ x.genre }}</td>
-							<td>{{ x.price }}</td>
-							<td><input type="submit" value="Lägg i kundkorg" ng-click="addToCart(x.id)"></td>
-							<td><button type="button" data-toggle="modal" data-target="#modal" ng-click="readMore(x.id)">Läs mer</button></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<br><br><br>
-
-				<div class="modal" id="modal">
-					<div class="modal-dialog modal-sm">
-						<div class="modal-content">
-							<div class="modal-header">
-								 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">Close</span></button>
-									</div>
-									 <div class="modal-body">
-										 <div class="modal-content">
-												<h4 class="modal-title">{{ moreInfo.title }}</h4> <br>
-												<img height="120" width="80" src="data:image/JPEG;base64,{{moreInfo.cover}}"/>
-												{{ moreInfo.synopsis }}
-
-										</div>
-									</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
-												
-											</div>
-								</div><!-- /.modal-content -->
-					 </div><!-- /.modal-dialog -->
+					<div id="cartBody"></div>
 				</div>
+
 			</div>
 
-			<div id="cartContainer" ng-show="hideOrShowWhenGoingToCart">
-				<div id="middle" align="center">
-					<h1>Kassa-Betalning</h1>
-					<table>
-						<tr>
+		</div>
 
-							<th>Title</th>
-							<th>Price</th>
-							<th>Add/Remove</th>
+	</div>
 
-						</tr>
-
-						<tbody id="showMoviesInCart">
-						</tbody>
-					</table>
-					<div id="sumCart">
-						Att betala: {{sumScope}}kr
-					</div>
-
+	<div id="meny">
+		<nav class="navbar navbar">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="index.html">Movios</a>
 				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Om oss</a></li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Bläddra filmer <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<!-- <li><a href="#">Show all</a></li> -->
+							<li><a href="HTML/action.html">Action</a></li>
+							<!-- <li><a href="#">Drama</a></li> -->
+						</ul>
+					</li>
+					<li><a href="#">Nyheter</a></li>
+					<li><a href="#">Kontakt</a></li>
+				</ul>
 			</div>
+		</nav>
+	</div>
+	<br><br><br>
 
+	<div id="container" ng-hide="hideOrShowWhenGoingToCart">
+		<div id="middle" align="center">
+			<h1>Lista filmer</h1>
+			<hr>
+			<table id="listAllMovies">
+				<tr>
+					<th>Omslag</th>
+					<th>Titel</th>
+					<th>Längd</th>
+					<th>Utgivningsår</th>
+					<th>Genre</th>
+					<th>Pris</th>
+				</tr>
 
-
-
+				<tbody ng-repeat="x in movies | filter:search">
+				<tr>
+					<td><img height="120" width="80" src="data:image/JPEG;base64,{{x.cover}}"/></td>
+					<td>{{ x.title }}</td>
+					<td>{{ x.length }}</td>
+					<td>{{ x.release_year }}</td>
+					<td>{{ x.genre }}</td>
+					<td>{{ x.price }}</td>
+					<td><input type="submit" value="Lägg i kundkorg" ng-click="addToCart(x.id)"></td>
+					<td><button type="button" data-toggle="modal" data-target="#modal" ng-click="readMore(x.id)">Läs mer</button></td>
+				</tr>
+				</tbody>
+			</table>
 		</div>
 		<br><br><br>
 
-		<div id="footer"><a href="index.html">Home</a> | About | &copy 2016 movios.se</div>
+		<div class="modal" id="modal">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">Close</span></button>
+					</div>
+					<div class="modal-body">
+						<div class="modal-content">
+							<h4 class="modal-title">{{ moreInfo.title }}</h4> <br>
+							<img height="120" width="80" src="data:image/JPEG;base64,{{moreInfo.cover}}"/>
+							{{ moreInfo.synopsis }}
 
-	
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+	</div>
+
+	<div id="cartContainer" ng-show="hideOrShowWhenGoingToCart">
+		<div id="middle" align="center">
+			<h1>Kassa-Betalning</h1>
+			<table>
+				<tr>
+
+					<th>Titel</th>
+					<th>Pris</th>
+					<th>Lägg till/Ta bort</th>
+
+				</tr>
+
+				<tbody id="showMoviesInCart">
+				</tbody>
+			</table>
+			<div id="sumCart">
+				Att betala: {{sumScope}}kr
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+</div>
+<br><br><br>
+
+<div id="footer"><a href="index.html">Hem</a> | Om oss | &copy 2016 movios.se</div>
+
+
 
 
 </body>
