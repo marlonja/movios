@@ -1,0 +1,161 @@
+body{
+	font-family: Montserrat !important;
+}
+
+.container-fluid{
+	background-color: white;
+	
+}
+
+.navbar-brand{
+	color: #2BC1EB;	
+	font-size: 35px !important;
+}
+
+
+th, td {
+    padding: 5px !important;
+    text-align: left;	
+	width: 80px;
+	min-width: 160px;
+}
+
+
+h1{	
+	text-align: center;
+}
+
+ul {	
+    list-style-type: none;
+   
+       
+}
+
+li a {
+    display: block;
+    color: #2BC1EB;    
+    text-decoration: none;
+}
+
+
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+ul{
+	list-style-type: none;
+	margin-left:10px;
+}
+
+a{
+	font-family: Montserrat !important;
+	text-transform: uppercase;	
+		
+}
+
+a:hover {
+	text-decoration:none !important;
+	color: black !important;
+	background-color: lightgrey !important;
+}
+
+
+.movies{
+	height: 150px;
+}
+
+#header{
+	height: 40%;
+	background-image: url(../PICS/up.jpg);
+	background-repeat: no-repeat;
+	
+	background-position: center;
+	
+}
+
+#meny{
+	background-color: white;
+}
+
+#container{
+	width:100%;
+    position:relative;
+	float:left;
+	overflow:hidden;
+	margin: 20px;
+}
+
+#listAllMovies{
+	width: 100%;
+}
+
+
+#left{	
+	float:left;
+	width:15%;	
+	position:relative;
+	overflow:hidden;
+}
+
+#right{
+	background-color: #F8F8FF;
+	float:right;
+	width:10%;
+	height: 100%;
+	text-align: left;
+	padding: 10px;
+}
+
+#search{
+	position: relative;
+	text-align: center;
+	top: 50%;
+}
+
+#login{
+	float:right;
+	width:10%;
+	text-align: left;
+}
+
+#userIcon{
+	font-size: 30px;
+	background: #2BC1EB;
+	border: none;
+	color: white
+}
+
+#userIcon:hover {
+	cursor: pointer;
+	color: grey;
+}
+
+#cartIcon{
+	font-size: 30px;
+	background: #2BC1EB;
+	border: none;
+	color: white
+}
+
+#cartIcon:hover {
+	cursor: pointer;
+	color: grey;
+}
+
+#footer{
+	clear:both;
+	height: 140px;	
+	text-align:center;
+	padding:5px;
+}
+
+#logo{
+	height: 20%;
+}
+
+#wrapper{
+   width:100%;
+   margin:0 auto;
+   text-align:left;
+}
