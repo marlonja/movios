@@ -15,88 +15,82 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 public class MovieModel implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	private String title;
+    private String title;
+    private Integer length;
+    private Integer release_year;
+    private String synopsis;
+    private String genre;
+    private Double price;
 
-	private String length;
+    @Lob
+    @Column(length = 100000)
+    private byte[] cover;
 
-	private String genre;
-	
-	private String price;
-	
-	private String release_year;
-	
-	private String synopsis;
+    public byte[] getCover() {
+        return cover;
+    }
 
-	@Lob
-	@Column(length = 100000)
-	private byte[] cover;
+    public void setCover(byte[] cover) {
+        this.cover = cover;
+    }
 
-	public byte[] getCover() {
-		return cover;
-	}
+    public MovieModel() {
 
-	public void setCover(byte[] cover) {
-		this.cover = cover;
-	}
+    }
 
-	public MovieModel() {
+    public Long getId() {
+        return id;
+    }
 
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public Integer getLength() {
+        return length;
+    }
 
-	public String getLength() {
-		return length;
-	}
+    public void setLength(Integer length) {
+        this.length = length;
+    }
 
-	public void setLength(String length) {
-		this.length = length;
-	}
+    public Integer getRelease_year() {
+        return release_year;
+    }
 
+    public void setRelease_year(Integer release_year) {
+        this.release_year = release_year;
+    }
 
-	public String getGenre() {
-		return genre;
-	}
+    public String getSynopsis() {
+        return synopsis;
+    }
 
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
+    }
 
-	public String getPrice() {
-		return price;
-	}
+    public String getGenre() {
+        return genre;
+    }
 
-	public void setPrice(String price) {
-		this.price = price;
-	}
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
-	public String getRelease_year() {
-		return release_year;
-	}
+    public Double getPrice() {
+        return price;
+    }
 
-	public void setRelease_year(String release_year) {
-		this.release_year = release_year;
-	}
-
-	public String getSynopsis() {
-		return synopsis;
-	}
-
-	public void setSynopsis(String synopsis) {
-		this.synopsis = synopsis;
-	}
-
-	public Long getId() {
-		return id;
-	}
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 }
