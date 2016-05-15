@@ -1,6 +1,6 @@
 package com.movios.models;
 
-import com.movios.controllers.MovieYearValidator;
+import com.movios.controllers.MovieControllerYearValidator;
 
 import java.io.Serializable;
 
@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Table(name = "movies")
@@ -70,7 +69,7 @@ public class MovieModel implements Serializable {
     }
 
     public void setRelease_year(Integer release_year) {
-        MovieYearValidator.validateYear(release_year);
+        MovieControllerYearValidator.validateYear(release_year);
         this.release_year = release_year;
     }
 
@@ -103,8 +102,7 @@ public class MovieModel implements Serializable {
     }
 
     public void setCreation_date(Integer creation_date) {
-        MovieYearValidator.validateYear(creation_date);
-        this.release_year = release_year;
+        MovieControllerYearValidator.validateYear(creation_date);
         this.creation_date = creation_date;
     }
 }
