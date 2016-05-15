@@ -1,5 +1,7 @@
 package com.movios.models;
 
+import com.movios.controllers.MovieYearValidator;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -25,6 +27,7 @@ public class MovieModel implements Serializable {
     private String synopsis;
     private String genre;
     private Double price;
+    private Integer creation_date;
 
     @Lob
     @Column(length = 100000)
@@ -67,6 +70,7 @@ public class MovieModel implements Serializable {
     }
 
     public void setRelease_year(Integer release_year) {
+        MovieYearValidator.validateYear(release_year);
         this.release_year = release_year;
     }
 
@@ -92,5 +96,15 @@ public class MovieModel implements Serializable {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Integer getCreation_date() {
+        return creation_date;
+    }
+
+    public void setCreation_date(Integer creation_date) {
+        MovieYearValidator.validateYear(creation_date);
+        this.release_year = release_year;
+        this.creation_date = creation_date;
     }
 }
