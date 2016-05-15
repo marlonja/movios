@@ -3,7 +3,6 @@ package com.movios.models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,8 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.movios.controllers.PasswordController;
-import com.movios.models.ModelExceptions.InvaldPasswordException;
+import com.movios.controllers.UserControllerEmailValidator;
+import com.movios.controllers.UserControllerPasswordValidator;
 
 @Table(name = "users")
 @SuppressWarnings("serial")
@@ -61,6 +60,7 @@ public class UserModel implements Serializable {
     }
 
     public void setEmail(String email) {
+        UserControllerEmailValidator.validateEmail(email);
         this.email = email;
     }
 
@@ -101,7 +101,7 @@ public class UserModel implements Serializable {
     }
 
     public void setPassword(String password) {
-        PasswordController.validatePassword(password);
+        UserControllerPasswordValidator.validatePassword(password);
         this.password = password;
     }
 }
