@@ -5,43 +5,44 @@ body{
 
 .container-fluid{
 	background-color: white;
-	
+
 }
 
 .navbar-brand{
-	color: #2BC1EB;	
+	color: #2BC1EB;
 	font-size: 35px !important;
 }
 
 
 th, td {
-    padding: 5px !important;
-    text-align: left;	
+	padding: 5px !important;
+	text-align: left;
 	width: 80px;
 	min-width: 160px;
 }
 
 
-h1{	
+h1{
 	text-align: center;
 }
 
-ul {	
-    list-style-type: none;
-   
-       
+ul {
+	list-style-type: none;
+	color: black;
+
+
 }
 
 li a {
-    display: block;
-    color: #2BC1EB;    
-    text-decoration: none;
+	display: block;
+	color: #2BC1EB;
+	text-decoration: none;
 }
 
 
 li a:hover {
-    background-color: #555;
-    color: white;
+	background-color: #555;
+	color: white;
 }
 
 ul{
@@ -51,8 +52,8 @@ ul{
 
 a{
 	font-family: Montserrat !important;
-	text-transform: uppercase;	
-		
+	text-transform: uppercase;
+
 }
 
 a:hover {
@@ -67,45 +68,24 @@ a:hover {
 }
 
 #header{
+	width: 100%;
 	height: 40%;
 	background-image: url(../PICS/up.jpg);
 	background-repeat: no-repeat;
-	
 	background-position: center;
-	
 }
 
 #meny{
 	background-color: white;
 }
 
+#loggedIn{
+	color: white;
+}
+
 #container{
 	width:100%;
-    position:relative;
-	float:left;
-	overflow:hidden;
-	margin: 20px;
-}
 
-#listAllMovies{
-	width: 100%;
-}
-
-
-#left{	
-	float:left;
-	width:15%;	
-	position:relative;
-	overflow:hidden;
-}
-
-#right{
-	background-color: #F8F8FF;
-	float:right;
-	width:10%;
-	height: 100%;
-	text-align: left;
-	padding: 10px;
 }
 
 #search{
@@ -118,6 +98,15 @@ a:hover {
 	float:right;
 	width:10%;
 	text-align: left;
+
+}
+
+#login a{
+	color: white;
+}
+
+#loginFields{
+	height: 30%;
 }
 
 #userIcon{
@@ -146,17 +135,14 @@ a:hover {
 
 #footer{
 	clear:both;
-	height: 140px;	
+	height: 140px;
 	text-align:center;
 	padding:5px;
 }
 
-#logo{
-	height: 20%;
-}
 
 #wrapper{
-   width:100%;
-   margin:0 auto;
-   text-align:left;
+	width:100%;
+	margin:0 auto;
+	text-align:left;
 }
