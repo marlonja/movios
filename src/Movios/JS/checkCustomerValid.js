@@ -3,6 +3,7 @@ var validationApp = angular.module('validationApp', []);
     validationApp.controller('mainController', function($scope, $http) {
     $scope.submitForm = function() {
         urlBase = "http://localhost:8080/api/users/";
+        
         if ($scope.userForm.$valid) {
                 $http.post(urlBase,{
                     address: $scope.user.address,

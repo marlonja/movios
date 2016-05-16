@@ -29,19 +29,19 @@
 
 	<div id="adminContainer">
 		<div class="text-center">
-			<form name="adminForm">
+			<form name="adminForm" ng-submit="submitForm()">
 				<div class="input-fields">
 					<h4>Lägg till film</h4>
-					<input type="text" placeholder="Title" ng-model="addTitle" id="titleForm">
-					<input type="time" placeholder="Time" ng-model="addLength">
-					<input type="number" placeholder="Release year" ng-model="addYear">
-					<textarea placeholder="Synopsis" ng-model="addSynopsis"> </textarea>
-					<select ng-model="selectedGenre" ng-options="x for x in genres">
+					<input type="text" placeholder="Title" ng-model="addTitle" id="titleForm" required>
+					<input type="number" placeholder="Time" ng-model="addLength" required>
+					<input type="number" placeholder="Release year" ng-model="addYear" required>
+					<textarea placeholder="Synopsis" ng-model="addSynopsis" required> </textarea>
+					<select ng-model="selectedGenre" ng-options="x for x in genres" required>
 						<option value="">Genre</option>
 					</select>
-					<input type="number" placeholder="Price" ng-model="addPrice">
+					<input type="number" placeholder="Price" ng-model="addPrice" required>
 
-					<input type="submit" value="OK" ng-click="addMovie()" ng-disabled="adminForm.$invalid">
+					<button type="submit" value="OK" ng-disabled="adminForm.$invalid">OK</button>
 				</div>
 			</form>
 			<table class="table table-striped">

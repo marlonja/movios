@@ -40,7 +40,7 @@ app.controller('mainControl', function($http, $scope){
                     alert('Error creating data');
                 });
         }
-    }
+    };
 
     $scope.updateMovie = function(movieObj, newTitle, newLength, newYear, newSynopsis, newGenre, newPrice){
         console.log('updateMovie');
