@@ -151,3 +151,15 @@ a:hover {
 	margin:0 auto;
 	text-align:left;
 }
+
+@media screen and (min-width: 768px) {
+
+	#modal .modal-dialog  {width:900px;}
+
+}
+
+<!-- MODAL -->
+#modal .modal-dialog  {
+	width:100%;
+}
+

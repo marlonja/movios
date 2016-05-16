@@ -95,15 +95,18 @@
 				</div>
 				<div class="modal-body">
 					<div class="modal-content">
-						<h4 class="modal-title">{{ moreInfo.title }}</h4> <br>
-						{{ moreInfo.length }}
+						<h3 class="modal-title text-center">{{ moreInfo.title }}</h3> <br>
+						<h4 class="text-center">{{ moreInfo.price }} kr</h4>
+
+						<img height="370"  style="padding: 20px;" src="data:image/JPEG;base64,{{moreInfo.cover}}"/>
 						{{ moreInfo.synopsis }}
+
 
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-					<button type="button" class="btn btn-default" ng-click="addToWishList(moreInfo.id, 1)" >Lägg till i önskelista</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Stäng</button>
+				<!--	<button type="button" class="btn btn-default" ng-click="addToWishList(moreInfo.id, 1)" >Lägg till i önskelista</button> -->
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->

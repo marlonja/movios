@@ -70,7 +70,7 @@ app.controller('mainControl', function($http, $scope){
             length: newLength,
             release_year: newYear,
             synopsis: newSynopsis,
-            genre: newGenre,
+            genre: newGenre.toUpperCase(),
             price: newPrice
 
         }).success(function(){

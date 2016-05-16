@@ -72,7 +72,10 @@
 							<td ng-hide="editorEnable"> {{x.synopsis}} </td>
 							<td ng-show="editorEnable"><input type="text" placeholder="{{x.synopsis}}" ng-model="newSynopsis"></td>
 							<td ng-hide="editorEnable"> {{x.genre}} </td>
-							<td ng-show="editorEnable"><input type="text" placeholder="{{x.genre}}" ng-model="newGenre"></td>
+							<td ng-show="editorEnable"><select ng-model="newGenre" ng-options="x for x in genres" required>
+								<option value="">{{x.genre}}</option>
+							</select></td>
+
 							<td ng-hide="editorEnable"> {{x.price}}
 
 							</td>
