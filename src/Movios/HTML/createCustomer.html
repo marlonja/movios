@@ -76,7 +76,7 @@
                     <!-- PASSWORD -->
                     <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
                         <label>Password</label>
-                        <input type="password" name="password" class="form-control" ng-model="user.password" required>
+                        <input type="password" min="6" max="20" name="password" class="form-control" ng-model="user.password" required>
                         <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block">Skriv in lösenord.</p>
                     </div>
 
@@ -90,7 +90,7 @@
                     <!-- ZIPCODE -->
                     <div class="form-group" ng-class="{ 'has-error' : userForm.zipCode.$invalid && !userForm.zipCode.$pristine }">
                         <label>Post NR</label>
-                        <input type="text" name="zipCode" class="form-control" ng-model="user.zipCode" required>
+                        <input type="number" name="zipCode" class="form-control" ng-model="user.zipCode" required>
                         <p ng-show="userForm.zipCode.$invalid && !userForm.zipCode.$pristine" class="help-block">Skriv in ditt post nr.</p>
                     </div>
 

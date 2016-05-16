@@ -3,7 +3,6 @@ package com.movios.models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.movios.controllers.PasswordController;
 import com.movios.controllers.UserControllerEmailValidator;
-import com.movios.controllers.UserControllerPasswordValidator;
 
 @Table(name = "users")
 @SuppressWarnings("serial")
@@ -101,7 +100,7 @@ public class UserModel implements Serializable {
     }
 
     public void setPassword(String password) {
-        UserControllerPasswordValidator.validatePassword(password);
+        PasswordController.validatePassword(password);
         this.password = password;
     }
 }
