@@ -1,5 +1,5 @@
 var app = angular.module('test', []);
-app.controller('mainControl', function($http, $scope, $compile){
+app.controller('mainControl', function($http, $scope){
 
     var array = [];
     var getEmailFromInput;
@@ -13,6 +13,24 @@ app.controller('mainControl', function($http, $scope, $compile){
         $http.get(urlBase).success(function(data){
             $scope.movies = data;
 
+        });
+    };
+
+    $scope.getMoviesByGenre = function(){
+        console.log("inne i getMoviesByGenre");
+        $http.get(urlBase).success(function(data){
+            var list = [];
+            for(i = 0; i<data.length; i++){
+                if(data[i].genre == "ACTION"){
+                    list.push(data[i]);
+
+                }
+
+
+            }
+
+            $scope.actionMovies = list;
+            console.log(list);
         });
     };
 

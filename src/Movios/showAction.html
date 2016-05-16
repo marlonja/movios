@@ -11,7 +11,7 @@
 						<th>Pris</th>
 					</tr>
 
-					<tbody ng-repeat="x in movies | filter:search">
+					<tbody ng-repeat="x in actionMovies | filter:search">
 						<tr>
 							<td><img height="120" width="80" src="data:image/JPEG;base64,{{x.cover}}"/></td>
 							<td>{{ x.title }}</td>
