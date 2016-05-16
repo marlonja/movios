@@ -14,47 +14,47 @@ import org.junit.Test;
 
 public class UserModelPasswordTest {
 
-	private static final String SHORT_PASSWORD = "12345";
-	private static final String LONG_PASSWORD = "123456789012345678901";
-	private static final String CHARACTERISTIC_PASSWORD = "d13abf*cfABC-_-";
+    private static final String SHORT_PASSWORD = "12345";
+    private static final String LONG_PASSWORD = "123456789012345678901";
+    private static final String CHARACTERISTIC_PASSWORD = "d13abf*cfABC-_-";
 
-	@Test
-	public void passwordLongerThanTwenty() {
+    @Test
+    public void passwordLongerThanTwenty() {
 
-		boolean longerThanTwenty = LONG_PASSWORD.length() > 20;
-		if (longerThanTwenty) {
-			// nothing happens if the test succeded
-		} else {
+        boolean longerThanTwenty = LONG_PASSWORD.length() > 20;
+        if (longerThanTwenty) {
+            // nothing happens if the test succeded
+        } else {
 
-			fail("Password was longer then 20 characters");
-		}
-		return;
-	}
+            fail("Password was longer than 20 characters");
+        }
+        return;
+    }
 
-	@Test
-	public void passwordLessThanSix() {
+    @Test
+    public void passwordLessThanSix() {
 
-		boolean lessThanSix = SHORT_PASSWORD.length() < 6;
-		if (lessThanSix) {
-			// nothing happens if the test succeded
-		} else {
-			fail("Password was shorter than 6 characters");
-		}
+        boolean lessThanSix = SHORT_PASSWORD.length() < 6;
+        if (lessThanSix) {
+            // nothing happens if the test succeded
+        } else {
+            fail("Password was shorter than 6 characters");
+        }
 
-		return;
-	}
+        return;
+    }
 
-	@Test
-	public void passwordContainsInvalidCharacter() {
+    @Test
+    public void passwordContainsInvalidCharacter() {
 
-		// \\w = [a-zA-Z_0-9]
-		boolean hasInvalidCharacters = Pattern.matches("[\\w[_-]]+", CHARACTERISTIC_PASSWORD);
-		if (!hasInvalidCharacters) {
-			// nothing happens if the test succeded
-		} else {
-			fail("Password contains invalid character(s)");
-		}
-		return;
-	}
+        // \\w = [a-zA-Z_0-9]
+        boolean hasInvalidCharacters = Pattern.matches("[\\w[_-]]+", CHARACTERISTIC_PASSWORD);
+        if (!hasInvalidCharacters) {
+            // nothing happens if the test succeded
+        } else {
+            fail("Password contains invalid character(s)");
+        }
+        return;
+    }
 
 }
