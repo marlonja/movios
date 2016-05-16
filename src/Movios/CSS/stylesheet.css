@@ -84,8 +84,13 @@ a:hover {
 }
 
 #container{
-	width:100%;
+	width: 100%;
+}
 
+#adminContainer{
+	width: 100%;
+	padding: 10%;
+	margin-right: 50%;
 }
 
 #search{

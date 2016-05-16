@@ -5,6 +5,7 @@ var app = angular.module('admin', []);
 app.controller('mainControl', function($http, $scope){
 
     var urlBase="http://localhost:8080/api/movies/";
+    $scope.genres = ["Drama", "Comedy" ,"Action", "Horror", "Fantasy", "Sci-Fi", "Animation"];
 
     getAllMovies();
 
@@ -15,27 +16,30 @@ app.controller('mainControl', function($http, $scope){
         });
     };
 
-    $scope.addMovie = function(){
-        $http.post(urlBase,{
-            title: $scope.addTitle,
-            length: $scope.addLength,
-            release_year: $scope.addYear,
-            synopsis: $scope.addSynopsis,
-            genre: $scope.addGenre,
-            price: $scope.addPrice
+    $scope.submitForm = function(){
+        if ($scope.adminForm.$valid) {
+            $http.post(urlBase, {
+                title: $scope.addTitle,
+                length: $scope.addLength,
+                release_year: $scope.addYear,
+                synopsis: $scope.addSynopsis,
+                genre: $scope.selectedGenre.toUpperCase(),
+                price: $scope.addPrice
 
-        }).success(function(){
-            $scope.addTitle = "";
-            $scope.addLength = "";
-            $scope.addYear = "";
-            $scope.addSynopsis = "";
-            $scope.addGenre = "";
-            $scope.addPrice = "";
-            getAllMovies();
-        })
-            .error(function() {
-                alert('Error creating data');
-            });
+
+            }).success(function(){
+                $scope.addTitle = "";
+                $scope.addLength = "";
+                $scope.addYear = "";
+                $scope.addSynopsis = "";
+                $scope.addGenre = "";
+                $scope.addPrice = "";
+                getAllMovies();
+            })
+                .error(function() {
+                    alert('Error creating data');
+                });
+        }
     }
 
     $scope.updateMovie = function(movieObj, newTitle, newLength, newYear, newSynopsis, newGenre, newPrice){

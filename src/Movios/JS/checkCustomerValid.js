@@ -15,6 +15,7 @@ var validationApp = angular.module('validationApp', []);
 
                 }).success(function(){
                     alert("Du är redo att logga in");
+                    window.location.href = "../index.html"
                     })
                     .error(function() {
                         alert('Error creating data');

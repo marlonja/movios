@@ -90,8 +90,9 @@
                     <!-- ZIPCODE -->
                     <div class="form-group" ng-class="{ 'has-error' : userForm.zipCode.$invalid && !userForm.zipCode.$pristine }">
                         <label>Post NR</label>
-                        <input type="number" name="zipCode" class="form-control" ng-model="user.zipCode" required>
-                        <p ng-show="userForm.zipCode.$invalid && !userForm.zipCode.$pristine" class="help-block">Skriv in ditt post nr.</p>
+                        <input type="number" name="zipCode" class="form-control" maxlength="5" minlength="5"
+                               ng-model="user.zipCode" required>
+                        <p ng-show="userForm.zipCode.$invalid && !userForm.zipCode.$pristine" class="help-block">Skriv in ditt post nr med 5 siffror.</p>
                     </div>
 
                     <!-- CITY -->

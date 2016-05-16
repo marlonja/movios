@@ -10,7 +10,6 @@
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="CSS/adminIndexStyle.css">
 </head>
 
 <body ng-app="admin" ng-controller="mainControl">
@@ -18,28 +17,31 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="JS/adminGetMovies.js"></script>
 
-<div id="wrapper">
-	<div id="header">
-		<div id="search" class="text-center">
-			<input type="text" size="40" ng-model="search">
+	<div id="wrapper">
+		<div id="header">
+			<div id="search" class="text-center">
+				<input type="text" size="40" ng-model="search">
+			</div>
+
 		</div>
 
-	</div>
 
 
-
-	<div id="container">
+	<div id="adminContainer">
 		<div class="text-center">
-			<form>
+			<form name="adminForm">
 				<div class="input-fields">
 					<h4>Lägg till film</h4>
 					<input type="text" placeholder="Title" ng-model="addTitle" id="titleForm">
-					<input type="text" placeholder="Length" ng-model="addLength">
-					<input type="text" placeholder="Release year" ng-model="addYear">
-					<input type="text" placeholder="Synopsis" ng-model="addSynopsis">
-					<input type="text" placeholder="Genre" ng-model="addGenre">
-					<input type="text" placeholder="Price" ng-model="addPrice">
-					<input type="submit" value="OK" ng-click="addMovie()">
+					<input type="time" placeholder="Time" ng-model="addLength">
+					<input type="number" placeholder="Release year" ng-model="addYear">
+					<textarea placeholder="Synopsis" ng-model="addSynopsis"> </textarea>
+					<select ng-model="selectedGenre" ng-options="x for x in genres">
+						<option value="">Genre</option>
+					</select>
+					<input type="number" placeholder="Price" ng-model="addPrice">
+
+					<input type="submit" value="OK" ng-click="addMovie()" ng-disabled="adminForm.$invalid">
 				</div>
 			</form>
 			<table class="table table-striped">
