@@ -5,122 +5,101 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="CSS/stylesheet.css"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="CSS/adminIndexStyle.css">
 </head>
 
-<body ng-app="test" ng-controller="mainControl">
+<body ng-app="admin" ng-controller="mainControl">
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-<!-- <script type="text/javascript" src="JS/adminScript.js"></script> -->
-<script type="text/javascript" src="JS/getMovies.js"></script>
+<script type="text/javascript" src="JS/adminGetMovies.js"></script>
 
-	<div id="wrapper">
-				<div id="header">
-					<div id="search" class="text-center">
-						<input type="text" size="40" placeholder="Search..." ng-model="search">
-						<input type="button" id="searchBtn" value="OK">
-					</div>
-					<div id="login">
-					 <div class="dropdown">
-
-						<span class="glyphicon glyphicon-user" data-toggle="dropdown" id="userIcon"></span>
-						<ul class="dropdown-menu">
-						  <li><a href="HTML/logIn.html">Login</a></li>
-						  <li><a href="HTML/createCustomer.html">Create Account</a></li>
-						</ul>
-						<span class="glyphicon glyphicon-shopping-cart" id="cartIcon"></span>
-					</div>
-				</div>
-
-					<div id="left">
-						<img id="logo" src="PICS/logo.jpg"/>
-						<ul>
-							<li>
-								<a href="HTML/movios.html">Visa alla filmer</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-
-
-
-		<div id="container">
-			<div class="text-center">
-				<form>
-					<div class="input-fields">
-						<h4>Add movie</h4>
-						<input type="text" placeholder="Title" ng-model="addTitle" id="titleForm">						
-						<input type="text" placeholder="Length" ng-model="addLength">
-						<input type="text" placeholder="Release year" ng-model="addYear">
-						<input type="text" placeholder="Synopsis" ng-model="addSynopsis">
-						<input type="text" placeholder="Genre" ng-model="addGenre">
-						<input type="text" placeholder="Price" ng-model="addPrice">
-						<input type="submit" value="OK" ng-click="addMovie()">
-					</div>
-				</form>
-				<table class="table table-striped">
-			    <thead>
-			      <tr>
-			        <th>Title</th>
-			        <th>Length</th>					
-					<th>Release year</th>
-			        <th>Synopsis</th>
-					<th>Genre</th>
-					<th>Price</th>			        
-					<th>Remove</th>
-					<th>Update</th>
-					
-			      </tr>
-			    </thead>
-					<div>
-				    <tbody>
-					<form>
-				      <tr ng-repeat="x in movies | filter:search">
-								<td style="display:none" id="movieID" ng-model="id" >{{x.id}}</td>
-				        <td ng-hide="editorEnable"> {{x.title}} </td>
-								<td ng-show="editorEnable"><input type="text" placeholder="{{x.title}}" ng-model="newTitle"></td>
-				        <td ng-hide="editorEnable">{{x.length}}</td>
-								<td ng-show="editorEnable">	<input type="text" placeholder="{{x.length}}" ng-model="newLength"></td>
-				        <td ng-hide="editorEnable">{{x.release_year}}</td>
-								<td ng-show="editorEnable"><input type="text" placeholder="{{x.release_year}}" ng-model="newYear"></td>
-						<td ng-hide="editorEnable"> {{x.synopsis}} </td>
-								<td ng-show="editorEnable"><input type="text" placeholder="{{x.synopsis}}" ng-model="newSynopsis"></td>
-						<td ng-hide="editorEnable"> {{x.genre}} </td>
-								<td ng-show="editorEnable"><input type="text" placeholder="{{x.genre}}" ng-model="newGenre"></td>
-						<td ng-hide="editorEnable"> {{x.price}} 
-						
-						</td>
-								<td ng-show="editorEnable"><input type="text" placeholder="{{x.price}}" ng-model="newPrice">
-								<input type="submit" value="Update" ng-click="updateMovie(x, newTitle, newLength, newYear, newSynopsis, newGenre, newPrice)">
-								</td>
-								
-								
-
-								<td><button type="button"><span class="glyphicon glyphicon-remove" ng-click="deleteMovie(x.id)"></span></button></td>
-								
-								<td><button type="button" id="btnUpdate"><span class="glyphicon glyphicon-cog" ng-click="editorEnable = !editorEnable"></span></button>
-								
-								</td>
-								
-								
-				      </tr>
-					  </form>
-				    </tbody>
-					</div>
-			  </table>
-			</div>
+<div id="wrapper">
+	<div id="header">
+		<div id="search" class="text-center">
+			<input type="text" size="40" ng-model="search">
 		</div>
-
-		<div id="footer"><a href="index.html">Home</a> | About | &copy 2016 movio.se</div>
 
 	</div>
 
-	</body>
+
+
+	<div id="container">
+		<div class="text-center">
+			<form>
+				<div class="input-fields">
+					<h4>Lägg till film</h4>
+					<input type="text" placeholder="Title" ng-model="addTitle" id="titleForm">
+					<input type="text" placeholder="Length" ng-model="addLength">
+					<input type="text" placeholder="Release year" ng-model="addYear">
+					<input type="text" placeholder="Synopsis" ng-model="addSynopsis">
+					<input type="text" placeholder="Genre" ng-model="addGenre">
+					<input type="text" placeholder="Price" ng-model="addPrice">
+					<input type="submit" value="OK" ng-click="addMovie()">
+				</div>
+			</form>
+			<table class="table table-striped">
+				<thead>
+				<tr>
+					<th>Titel</th>
+					<th>Längd</th>
+					<th>Utgivningsår</th>
+					<th>Synopsis</th>
+					<th>Genre</th>
+					<th>Pris</th>
+					<th>Ta bort</th>
+					<th>Uppdatera</th>
+
+				</tr>
+				</thead>
+				<div>
+					<tbody>
+					<form>
+						<tr ng-repeat="x in movies | filter:search">
+							<td style="display:none" id="movieID" ng-model="id" >{{x.id}}</td>
+							<td ng-hide="editorEnable"> {{x.title}} </td>
+							<td ng-show="editorEnable"><input type="text" placeholder="{{x.title}}" ng-model="newTitle"></td>
+							<td ng-hide="editorEnable">{{x.length}}</td>
+							<td ng-show="editorEnable">	<input type="text" placeholder="{{x.length}}" ng-model="newLength"></td>
+							<td ng-hide="editorEnable">{{x.release_year}}</td>
+							<td ng-show="editorEnable"><input type="text" placeholder="{{x.release_year}}" ng-model="newYear"></td>
+							<td ng-hide="editorEnable"> {{x.synopsis}} </td>
+							<td ng-show="editorEnable"><input type="text" placeholder="{{x.synopsis}}" ng-model="newSynopsis"></td>
+							<td ng-hide="editorEnable"> {{x.genre}} </td>
+							<td ng-show="editorEnable"><input type="text" placeholder="{{x.genre}}" ng-model="newGenre"></td>
+							<td ng-hide="editorEnable"> {{x.price}}
+
+							</td>
+							<td ng-show="editorEnable"><input type="text" placeholder="{{x.price}}" ng-model="newPrice">
+								<input type="submit" value="Update" ng-click="updateMovie(x, newTitle, newLength, newYear, newSynopsis, newGenre, newPrice)">
+							</td>
+
+
+
+							<td><button type="button"><span class="glyphicon glyphicon-remove" ng-click="deleteMovie(x.id)"></span></button></td>
+
+							<td><button type="button" id="btnUpdate"><span class="glyphicon glyphicon-cog" ng-click="editorEnable = !editorEnable"></span></button>
+
+							</td>
+
+
+						</tr>
+					</form>
+					</tbody>
+				</div>
+			</table>
+		</div>
+	</div>
+
+	<div id="footer"><a href="index.html">Home</a> | About | &copy 2016 movio.se</div>
+
+</div>
+
+</body>
 
 </body>
 </html>
