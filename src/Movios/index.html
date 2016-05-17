@@ -66,9 +66,9 @@
 					<li class="active"><a href="#">Om oss</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Bläddra filmer <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#" ng-click="hideContainer = false; moviosLink = true; actionLink = false;">Visa alla</a></li>
-							<li><a href="#" ng-click="hideContainer = false; actionLink = true; moviosLink = false; getMoviesByGenre()">Action</a></li>
-							<li><a href="#" ng-click="dramaLink = true;">Drama</a></li>
+							<li><a href="#" ng-click="hideContainer = false; moviesLink = true; actionLink = false; dramaLink= false;">Visa alla</a></li>
+							<li><a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink= true; dramaLink = false; getMoviesByGenre('ACTION')">Action</a></li>
+							<li><a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = false; dramaLink= true; getMoviesByGenre('DRAMA')">Drama</a></li>
 						</ul>
 					</li>
 					<li><a href="#">Nyheter</a></li>
@@ -81,8 +81,9 @@
 
 	<div id="container" ng-hide="hideContainer" align="center">
 
-		<div ng-include="'showAll.html'" ng-show="moviosLink";></div>
+		<div ng-include="'showAll.html'" ng-show="moviesLink";></div>
 		<div ng-include="'showAction.html'" ng-show="actionLink";></div>
+		<div ng-include="'showDrama.html'" ng-show="dramaLink";></div>
 
 
 	</div>

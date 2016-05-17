@@ -16,17 +16,14 @@ app.controller('mainControl', function($http, $scope){
         });
     };
 
-    $scope.getMoviesByGenre = function(){
-        console.log("inne i getMoviesByGenre");
+    $scope.getMoviesByGenre = function(genre){
+        console.log(genre);
         $http.get(urlBase).success(function(data){
             var list = [];
             for(i = 0; i<data.length; i++){
-                if(data[i].genre == "ACTION"){
+                if(data[i].genre == genre){
                     list.push(data[i]);
-
                 }
-
-
             }
 
             $scope.actionMovies = list;
@@ -49,6 +46,7 @@ app.controller('mainControl', function($http, $scope){
         getPasswordFromInput = $scope.password;
         console.log(getEmailFromInput);
         console.log(getPasswordFromInput);
+        var boolean = false;
         $http.get(urlUser).success(function(data){
 
             for(i = 0; i<data.length; i++){
@@ -58,9 +56,17 @@ app.controller('mainControl', function($http, $scope){
                     $scope.hideLogInTxt = true;
                     $scope.hideCreateAccountTxt = true;
                     $scope.showLogOutTxt = true;
+                    boolean = false;
                     break;
+                }else{
+                    boolean = true;
                 }
 
+
+
+            }
+            if(boolean){
+                alert("Inloggning misslyckades, försök igen");
             }
 
         });
