@@ -17,24 +17,24 @@ import com.movios.services.UserService;
 
 @RestController
 public class UserController {
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private UserService userService;
 
-	@CrossOrigin
-	@RequestMapping(value = "/users/", method = RequestMethod.POST)
-	public void createUser(@RequestBody UserModel userModel) {
-		userService.saveUser(userModel);
-	}
+    @CrossOrigin
+    @RequestMapping(value = "/users/", method = RequestMethod.POST)
+    public void createUser(@RequestBody UserModel userModel) {
+        userService.saveUser(userModel);
+    }
 
-	@CrossOrigin
-	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
-	public ResponseEntity<UserModel> readUser(@PathVariable Long id) {
-		return new ResponseEntity<UserModel>(userService.readUsers(id), HttpStatus.OK);
-	}
+    @CrossOrigin
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+    public ResponseEntity<UserModel> readUser(@PathVariable Long id) {
+        return new ResponseEntity<UserModel>(userService.readUsers(id), HttpStatus.OK);
+    }
 
-	@CrossOrigin
-	@RequestMapping(value = "/users/", method = RequestMethod.GET)
-	public ResponseEntity<ArrayList<UserModel>> getAll() {
-		return new ResponseEntity<ArrayList<UserModel>>(userService.readAllUsers(), HttpStatus.OK);
-	}
+    @CrossOrigin
+    @RequestMapping(value = "/users/", method = RequestMethod.GET)
+    public ResponseEntity<ArrayList<UserModel>> getAll() {
+        return new ResponseEntity<ArrayList<UserModel>>(userService.readAllUsers(), HttpStatus.OK);
+    }
 }

@@ -1,6 +1,6 @@
 package com.movios.controllers;
 
-import com.movios.models.ModelExceptions.invalidYearFormatException;
+import com.movios.models.ModelExceptions.InvalidYearFormatException;
 
 import java.util.regex.Pattern;
 
@@ -19,14 +19,16 @@ public final class MovieYearValidator {
     public static void validateYear(Integer year) {
         StringBuilder yearMessageBuilder = new StringBuilder();
 
+        InvalidYearFormatException invalidYearFormatException = null;
+
         if (YearNotFourDigits(year)) {
             yearMessageBuilder.append("Year doesn't contain 4 digits\n");
         } else {
-
             try {
-                throw new invalidYearFormatException(yearMessageBuilder.toString());
-            } catch (invalidYearFormatException e) {
-                GenericLogger.printErrorAndException(LOG_FILE_NAME, yearMessageBuilder.toString());
+                invalidYearFormatException = new InvalidYearFormatException(yearMessageBuilder.toString());
+                throw invalidYearFormatException;
+            } catch (InvalidYearFormatException e) {
+                GenericLogger.printErrorAndException(LOG_FILE_NAME, yearMessageBuilder.toString(), invalidYearFormatException);
             }
         }
         return;

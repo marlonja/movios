@@ -12,19 +12,25 @@ public class GenericLogger {
 
     }
 
-    public static void printErrorAndException(String logFileName, String errorMessage) {
+    public static void printErrorAndException(String logFileName, String errorMessage, Exception exception) {
 
         Logger logger = Logger.getLogger(GenericLogger.class.getName());
+        final boolean APPEND = true;
+        FileHandler fileHandler = null;
 
         try {
-            FileHandler fileHandler = new FileHandler(logFileName);
+            fileHandler = new FileHandler(logFileName, APPEND);
             fileHandler.setFormatter(new SimpleFormatter());
             logger.addHandler(fileHandler);
+            throw exception;
 
-        } catch (IOException e) {
-            logger.log(Level.INFO, "File Input/Output-Exception");
-        } catch (Exception e) {
-            logger.log(Level.WARNING, errorMessage, new Exception());
+        } catch (IOException io) {
+            logger.log(Level.INFO, "", io);
+        } catch (Exception ex) {
+            logger.log(Level.WARNING, errorMessage, ex);
+        } finally {
+            fileHandler.flush();
+            fileHandler.close();
         }
     }
 }

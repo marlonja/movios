@@ -18,24 +18,24 @@ import com.movios.services.MovieWishListService;
 
 @RestController
 public class MovieWishListController {
-	@Autowired
-	private MovieWishListService movieWishListService;
+    @Autowired
+    private MovieWishListService movieWishListService;
 
-	@CrossOrigin
-	@RequestMapping(value = "/movieWishList/", method = RequestMethod.POST)
-	public void createMovieWishList(@RequestBody MovieWishListModel movieWishListModel) {
-		movieWishListService.saveMovieWishList(movieWishListModel);
-	}
+    @CrossOrigin
+    @RequestMapping(value = "/movieWishList/", method = RequestMethod.POST)
+    public void createMovieWishList(@RequestBody MovieWishListModel movieWishListModel) {
+        movieWishListService.saveMovieWishList(movieWishListModel);
+    }
 
-	@CrossOrigin
-	@RequestMapping(value = "/movieWishList/{id}", method = RequestMethod.GET)
-	public ResponseEntity<MovieWishListModel> readMovieWishList(@PathVariable Long id) {
-		return new ResponseEntity<MovieWishListModel>(movieWishListService.readMovieWishLists(id), HttpStatus.OK);
-	}
+    @CrossOrigin
+    @RequestMapping(value = "/movieWishList/{id}", method = RequestMethod.GET)
+    public ResponseEntity<MovieWishListModel> readMovieWishList(@PathVariable Long id) {
+        return new ResponseEntity<MovieWishListModel>(movieWishListService.readMovieWishLists(id), HttpStatus.OK);
+    }
 
-	@CrossOrigin
-	@RequestMapping(value = "/movieWishList/", method = RequestMethod.GET)
-	public ResponseEntity<ArrayList<MovieWishListModel>> getAll() {
-		return new ResponseEntity<ArrayList<MovieWishListModel>>(movieWishListService.readAllMovieWishLists(), HttpStatus.OK);
-	}
+    @CrossOrigin
+    @RequestMapping(value = "/movieWishList/", method = RequestMethod.GET)
+    public ResponseEntity<ArrayList<MovieWishListModel>> getAll() {
+        return new ResponseEntity<ArrayList<MovieWishListModel>>(movieWishListService.readAllMovieWishLists(), HttpStatus.OK);
+    }
 }
