@@ -1,11 +1,12 @@
 package com.movios.controllers;
 
-import java.util.regex.Pattern;
-
 import com.movios.models.ModelExceptions.InvaldPasswordException;
+
+import java.util.regex.Pattern;
 
 public final class PasswordController {
 
+	private static final String LOG_FILE_NAME = "password_log.txt";
 	private PasswordController() {
 
 	}
@@ -33,8 +34,7 @@ public final class PasswordController {
 			try {
 				throw new InvaldPasswordException(passwordMessageBuilder.toString());
 			} catch (InvaldPasswordException e) {
-				e.printStackTrace();
-				// refactor to log?
+				GenericLogger.printErrorAndException(LOG_FILE_NAME, passwordMessageBuilder.toString());
 			}
 		}
 
