@@ -21,6 +21,7 @@ app.controller('mainControl', function($http, $scope, $filter){
 
         if ($scope.adminForm.$valid) {
             $http.post(urlBase, {
+                coverStr: $scope.addCover,
                 title: $scope.addTitle,
                 length: $scope.addLength,
                 release_year: $scope.addYear,
@@ -29,9 +30,9 @@ app.controller('mainControl', function($http, $scope, $filter){
                 price: $scope.addPrice,
                 creation_date: today
 
-
             }).success(function(){
                 $scope.addTitle = "";
+                $scope.addCover = "";
                 $scope.addLength = "";
                 $scope.addYear = "";
                 $scope.addSynopsis = "";
@@ -45,12 +46,12 @@ app.controller('mainControl', function($http, $scope, $filter){
         }
     };
 
-    $scope.updateMovie = function(movieObj, newTitle, newLength, newYear, newSynopsis, newGenre, newPrice){
-        console.log('updateMovie');
+    $scope.updateMovie = function(movieObj, newTitle, newCover, newLength, newYear, newSynopsis, newGenre, newPrice){
 
         if(newTitle == undefined){
             newTitle = movieObj.title;
         }
+
         if(newLength == undefined){
             newLength = movieObj.length;
         }
@@ -67,8 +68,13 @@ app.controller('mainControl', function($http, $scope, $filter){
             newPrice = movieObj.price;
         }
 
+        if(newPrice == undefined){
+            newPrice = movieObj.price;
+        }
+
         $http.put(urlBase+movieObj.id,{
             id: movieObj.id,
+            coverStr: newCover,
             title: newTitle,
             length: newLength,
             release_year: newYear,

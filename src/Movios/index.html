@@ -72,7 +72,7 @@
 						</ul>
 					</li>
 					<li><a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = false; dramaLink= false; newsLink = true; newsMovies();">Nyheter</a></li>
-					<li><a href="#">Kontakt</a></li>
+					<li><a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = false; dramaLink= false; newsLink = false; contactLink = true;  ">Kontakt</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -86,6 +86,7 @@
 		<div ng-include="'HTML/showDrama.html'" ng-show="dramaLink";></div>
 		<div ng-include="'HTML/news.html'" ng-show="newsLink";></div>
 		<div ng-include="'HTML/about.html'" ng-show="aboutLink";></div>
+		<div ng-include="'HTML/contact.html'" ng-show="contactLink";></div>
 
 
 	</div>
@@ -101,7 +102,8 @@
 						<h3 class="modal-title text-center">{{ moreInfo.title }}</h3> <br>
 						<h4 class="text-center">{{ moreInfo.price }} kr</h4>
 
-						<img height="370"  style="padding: 20px;" src="data:image/JPEG;base64,{{moreInfo.cover}}"/>
+						<img height="370" style="padding: 20px;" src="{{moreInfo.coverStr}}" alt="image"/>
+
 						{{ moreInfo.synopsis }}
 
 

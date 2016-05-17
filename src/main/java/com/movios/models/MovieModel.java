@@ -25,6 +25,15 @@ public class MovieModel implements Serializable {
     private String genre;
     private Double price;
     private Integer creation_date;
+    private String coverStr;
+
+    public String getCoverStr() {
+        return coverStr;
+    }
+
+    public void setCoverStr(String coverStr) {
+        this.coverStr = coverStr;
+    }
 
     @Lob
     @Column(length = 100000)

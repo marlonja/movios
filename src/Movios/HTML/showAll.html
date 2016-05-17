@@ -12,7 +12,7 @@
 
 					<tbody ng-repeat="x in movies | filter:search">
 						<tr>
-							<td><img height="120" width="80" src="data:image/JPEG;base64,{{x.cover}}"/></td>
+							<td><img height="120px" src="{{x.coverStr}}" alt="image"/></td>
 							<td>{{ x.title }}</td>
 							<td>{{ x.length }}</td>
 							<td>{{ x.release_year }}</td>
