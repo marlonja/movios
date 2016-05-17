@@ -32,9 +32,10 @@
 			<form name="adminForm" ng-submit="submitForm()">
 				<div class="input-fields">
 					<h4>Lägg till film</h4>
+					<input type="file" ng-model="addCover">
 					<input type="text" placeholder="Title" ng-model="addTitle" id="titleForm" required>
 					<input type="number" placeholder="Time" ng-model="addLength" required>
-					<input type="number" placeholder="Release year" ng-model="addYear" required>
+					<input type="number" placeholder="Release year" minlength="4" maxlength="4" ng-model="addYear" required>
 					<textarea placeholder="Synopsis" ng-model="addSynopsis" required> </textarea>
 					<select ng-model="selectedGenre" ng-options="x for x in genres" required>
 						<option value="">Genre</option>
