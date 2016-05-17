@@ -46,6 +46,7 @@ app.controller('mainControl', function($http, $scope){
         getPasswordFromInput = $scope.password;
         console.log(getEmailFromInput);
         console.log(getPasswordFromInput);
+        var boolean = false;
         $http.get(urlUser).success(function(data){
 
             for(i = 0; i<data.length; i++){
@@ -55,9 +56,17 @@ app.controller('mainControl', function($http, $scope){
                     $scope.hideLogInTxt = true;
                     $scope.hideCreateAccountTxt = true;
                     $scope.showLogOutTxt = true;
+                    boolean = false;
                     break;
+                }else{
+                    boolean = true;
                 }
 
+
+
+            }
+            if(boolean){
+                alert("Inloggning misslyckades, försök igen");
             }
 
         });
