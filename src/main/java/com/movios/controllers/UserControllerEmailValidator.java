@@ -18,14 +18,17 @@ public class UserControllerEmailValidator {
     public static void validateEmail(String email) {
         StringBuilder emailMessageBuilder = new StringBuilder();
 
+        InvalidEmailFormatException invalidEmailFormatException = null;
+
         if (invalidEmailFormat(email)) {
             emailMessageBuilder.append("Invalid email format\n");
         } else {
 
             try {
-                throw new InvalidEmailFormatException(emailMessageBuilder.toString());
+                invalidEmailFormatException = new InvalidEmailFormatException(emailMessageBuilder.toString());
+                throw invalidEmailFormatException;
             } catch (InvalidEmailFormatException e) {
-                GenericLogger.printErrorAndException(LOG_FILE_NAME, emailMessageBuilder.toString());
+                GenericLogger.printErrorAndException(LOG_FILE_NAME, emailMessageBuilder.toString(), invalidEmailFormatException);
             }
         }
         return;
