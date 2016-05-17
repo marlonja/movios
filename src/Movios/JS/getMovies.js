@@ -16,17 +16,14 @@ app.controller('mainControl', function($http, $scope){
         });
     };
 
-    $scope.getMoviesByGenre = function(){
-        console.log("inne i getMoviesByGenre");
+    $scope.getMoviesByGenre = function(genre){
+        console.log(genre);
         $http.get(urlBase).success(function(data){
             var list = [];
             for(i = 0; i<data.length; i++){
-                if(data[i].genre == "ACTION"){
+                if(data[i].genre == genre){
                     list.push(data[i]);
-
                 }
-
-
             }
 
             $scope.actionMovies = list;
