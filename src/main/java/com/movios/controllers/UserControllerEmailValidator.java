@@ -9,34 +9,34 @@ import java.util.regex.Pattern;
  */
 public class UserControllerEmailValidator {
 
+    private static final String LOG_FILE_NAME = "email_log.txt";
+
     private UserControllerEmailValidator() {
 
     }
 
     public static void validateEmail(String email) {
-        boolean invalidEmail = false;
         StringBuilder emailMessageBuilder = new StringBuilder();
 
         if (invalidEmailFormat(email)) {
-            invalidEmail = true;
-            emailMessageBuilder.append("Not an valid email\n");
+            emailMessageBuilder.append("Invalid email format\n");
         } else {
 
             try {
                 throw new InvalidEmailFormatException(emailMessageBuilder.toString());
             } catch (InvalidEmailFormatException e) {
-                e.printStackTrace();
-                // refactor to log?
+                GenericLogger.printErrorAndException(LOG_FILE_NAME, emailMessageBuilder.toString());
             }
         }
         return;
     }
+
     private static boolean invalidEmailFormat(String email) {
         boolean invalidEmail;
         String strEmail = email + "";
-        String emailPattern =   "^[_A-Za-z0-9-\\+]*" +
-                                 "@[A-Za-z0-9-]+" +
-                              "(\\.[A-Za-z0-9]+)*$";
+        String emailPattern = "^[-_.\\w]+" +
+                "@[\\w]+" +
+                "(\\.[\\w]+)+$";
         // Email pattern is "string @ string . string" without white spaces.
 
         if (Pattern.matches(emailPattern, strEmail)) {
