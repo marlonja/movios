@@ -46,10 +46,17 @@ app.controller('mainControl', function($http, $scope, $filter){
         }
     };
 
-    $scope.updateMovie = function(movieObj, newTitle, newCover, newLength, newYear, newSynopsis, newGenre, newPrice){
+    $scope.updateMovie = function(movieObj, newTitle, newCover, newLength, newYear, newSynopsis, newGenre, newPrice, newCreationDate){
+        console.log(newCreationDate);
+        console.log(movieObj.creation_date);
+
 
         if(newTitle == undefined){
             newTitle = movieObj.title;
+        }
+
+        if(newCover == undefined){
+            newCover = movieObj.coverStr;
         }
 
         if(newLength == undefined){
@@ -72,6 +79,11 @@ app.controller('mainControl', function($http, $scope, $filter){
             newPrice = movieObj.price;
         }
 
+
+        if(newCreationDate == undefined){
+            newCreationDate = movieObj.creation_date;
+        }
+
         $http.put(urlBase+movieObj.id,{
             id: movieObj.id,
             coverStr: newCover,
@@ -80,7 +92,8 @@ app.controller('mainControl', function($http, $scope, $filter){
             release_year: newYear,
             synopsis: newSynopsis,
             genre: newGenre.toUpperCase(),
-            price: newPrice
+            price: newPrice,
+            creation_date: newCreationDate
 
         }).success(function(){
             getAllMovies();
