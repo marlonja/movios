@@ -1,5 +1,5 @@
 var app = angular.module('test', []);
-app.controller('mainControl', function($http, $scope){
+app.controller('mainControl', function($http, $scope, $filter){
 
     var array = [];
     var getEmailFromInput;
@@ -40,6 +40,25 @@ app.controller('mainControl', function($http, $scope){
                 alert('Error loading data');
             });
     };
+
+    $scope.newsMovies = function () {
+        var today = $filter('date')(new Date(),'yyMMdd');
+        var lastMonth = today-100;
+        console.log(lastMonth);
+
+        $http.get(urlBase).success(function(data){
+            var list = [];
+            for (i = 0; i<data.length; i++){
+                if(data[i].creation_date > lastMonth){
+                    list.push(data[i])
+                }
+            }
+            console.log(list)
+            $scope.moviesByNews = list;
+        }).error(function(){
+                alert('Error loading data');
+            });
+    }
 
     $scope.checkLogin = function(){
         getEmailFromInput = $scope.email;

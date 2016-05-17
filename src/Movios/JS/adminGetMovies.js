@@ -2,7 +2,7 @@
  * Created by Marlon on 2016-05-16.
  */
 var app = angular.module('admin', []);
-app.controller('mainControl', function($http, $scope){
+app.controller('mainControl', function($http, $scope, $filter){
 
     var urlBase="http://localhost:8080/api/movies/";
     $scope.genres = ["Drama", "Comedy" ,"Action", "Horror", "Fantasy", "Sci-Fi", "Animation"];
@@ -17,6 +17,8 @@ app.controller('mainControl', function($http, $scope){
     };
 
     $scope.submitForm = function(){
+        var today = $filter('date')(new Date(),'yyMMdd');
+
         if ($scope.adminForm.$valid) {
             $http.post(urlBase, {
                 title: $scope.addTitle,
@@ -24,7 +26,8 @@ app.controller('mainControl', function($http, $scope){
                 release_year: $scope.addYear,
                 synopsis: $scope.addSynopsis,
                 genre: $scope.selectedGenre.toUpperCase(),
-                price: $scope.addPrice
+                price: $scope.addPrice,
+                creation_date: today
 
 
             }).success(function(){
