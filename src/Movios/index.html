@@ -51,7 +51,7 @@
 			</div>
 			<br>
 
-			<a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = false; dramaLink= false; newsLink = false; contactLink = false; aboutLink = false; cartLink = true;">
+			<a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = false; dramaLink= false; newsLink = false; aboutLink = false; contactLink = false; cartLink = true;">
 				<span id="cartIcon" class="glyphicon glyphicon-shopping-cart"></span>
 
 				<span id="cartText" ng-show="counter > 0">
@@ -69,16 +69,16 @@
 					<a class="navbar-brand" href="" ng-click="home()">Movios</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li><a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = false; dramaLink= false; cartLink=false; aboutLink = true; ">Om oss</a></li>
+					<li><a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = false; dramaLink= false; newsLink = false; aboutLink = true; contactLink = false; cartLink=false; ">Om oss</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Bläddra filmer <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#" ng-click="hideContainer = false; moviesLink = true; actionLink = false; dramaLink= false; cartLink=false; showAll.html = true;">Visa alla</a></li>
-							<li><a href="#" ng-click="hideContainer = false; moviesLink = false; dramaLink = false; cartLink = false; actionLink = true; getMoviesByGenre('ACTION')">Action</a></li>
-							<li><a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = false; cartLink=false; dramaLink = true; getMoviesByGenre('DRAMA')">Drama</a></li>
+							<li><a href="#" ng-click="hideContainer = false; moviesLink = true; actionLink = false; dramaLink= false; newsLink = false; aboutLink = false; contactLink = false; cartLink=false;">Visa alla</a></li>
+							<li><a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = true; dramaLink= false; newsLink = false; aboutLink = false; contactLink = false; cartLink=false; getMoviesByGenre('ACTION')">Action</a></li>
+							<li><a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = false; dramaLink= true; newsLink = false; aboutLink = false; contactLink = false; cartLink=false; getMoviesByGenre('DRAMA')">Drama</a></li>
 						</ul>
 					</li>
-					<li><a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = false; dramaLink= false; cartLink=false; newsLink = true; newsMovies();">Nyheter</a></li>
-					<li><a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = false; dramaLink= false; newsLink = false; cartLink=false; contactLink = true;  ">Kontakt</a></li>
+					<li><a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = false; dramaLink= false; newsLink = true; aboutLink = false; contactLink = false; cartLink=false; newsMovies();">Nyheter</a></li>
+					<li><a href="#" ng-click="hideContainer = false; moviesLink = false; actionLink = false; dramaLink= false; newsLink = false; aboutLink = false; contactLink = true; cartLink=false;">Kontakt</a></li>
 				</ul>
 			</div>
 		</nav>
