@@ -104,7 +104,7 @@ app.controller('mainControl', function($http, $scope, $filter){
     $scope.addToCart = function(movie){
         var found = false;
         $scope.counter++;
-        console.log($scope.counter);
+
         //check quantity -- need to upgrade DB with quantity column!
         $scope.cart.forEach(function(item){
             if(item.id == movie.id){
@@ -116,13 +116,15 @@ app.controller('mainControl', function($http, $scope, $filter){
             $scope.cart.push(angular.extend({quantity: 1}, movie));
 
         }
+        
 
     };
 
     $scope.removeItemFromCart = function(movie, index){
 
         if(movie.quantity == 1){
-            $scope.cart.splice($scope.cart.indexOf(index), 1);
+            $scope.cart.splice(index, 1);
+            $scope.quantity = 0;
             $scope.counter -=1;
 
         }else {
@@ -132,7 +134,7 @@ app.controller('mainControl', function($http, $scope, $filter){
 
     };
 
-    $scope.addItemFromCart = function(movie){
+    $scope.addItemToCart = function(movie){
         if(movie.quantity == 0){
             movie.quantity = 0;
         }else {
@@ -148,6 +150,7 @@ app.controller('mainControl', function($http, $scope, $filter){
             counter++;
         }
     }
+
 
 
 
