@@ -79,7 +79,6 @@ app.controller('mainControl', function($http, $scope, $filter){
             newPrice = movieObj.price;
         }
 
-
         if(newCreationDate == undefined){
             newCreationDate = movieObj.creation_date;
         }

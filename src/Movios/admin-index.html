@@ -69,7 +69,8 @@
 								<tr ng-repeat="x in movies | filter:search">
 									<td style="display:none" id="movieID" ng-model="id" >{{x.id}}</td>
 
-									<td ng-hide="editorEnable"><img height="120px" src="{{x.coverStr}}" alt="image"/></td>
+									<td ng-hide="editorEnable"><img height="120px" src="{{x.coverStr}}" alt="image"/>
+
 									<td ng-show="editorEnable"><input type="text" placeholder="{{x.coverStr}}" ng-model="newCover"></td>
 
 									<td ng-hide="editorEnable"> {{x.title}} </td>
