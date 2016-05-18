@@ -1,7 +1,7 @@
 var app = angular.module('test', []);
 app.controller('mainControl', function($http, $scope, $filter){
 
-    var array = [];
+    $scope.cart = [];
     var getEmailFromInput;
     var getPasswordFromInput;
     var urlBase="http://localhost:8080/api/movies/";
@@ -100,13 +100,22 @@ app.controller('mainControl', function($http, $scope, $filter){
         $scope.hideContainer = true;
     }
 
-    $scope.addToCart = function(id){
-        $('#cartBody').empty();
-        array.push(id);
-        console.log('You have added a movie to your cart');
-        console.log(array);
-        angular.element(document.getElementById('cartBody')).append('<p>' + array.length + " varor i din kundkorg" + '</p>');
-    }
+    $scope.addToCart = function(movie){
+        console.log("addToCart func")
+        var found = false;
+
+        //check quantity -- need to upgrade DB with quantity column!
+        $scope.cart.forEach(function(item){
+            if(item.id == movie.id){
+                item.quantity++;
+                found = true;
+            }
+        });
+        if(!found){
+            $scope.cart.push(angular.extend({quantity: 1}, movie));
+            console.log($scope.cart)
+        }
+    };
 
     $scope.showCart = function(){
         console.log(array);

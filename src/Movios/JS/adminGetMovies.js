@@ -18,7 +18,7 @@ app.controller('mainControl', function($http, $scope, $filter){
 
     $scope.submitForm = function(){
         var today = $filter('date')(new Date(),'yyMMdd');
-
+        
         if ($scope.adminForm.$valid) {
             $http.post(urlBase, {
                 coverStr: $scope.addCover,
@@ -47,9 +47,6 @@ app.controller('mainControl', function($http, $scope, $filter){
     };
 
     $scope.updateMovie = function(movieObj, newTitle, newCover, newLength, newYear, newSynopsis, newGenre, newPrice, newCreationDate){
-        console.log(newCreationDate);
-        console.log(movieObj.creation_date);
-
 
         if(newTitle == undefined){
             newTitle = movieObj.title;

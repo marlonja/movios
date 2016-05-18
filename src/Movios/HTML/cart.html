@@ -1,0 +1,25 @@
+    <h1>KASSA</h1>
+    <hr>
+    <table id="listAllMovies">
+        <tr>
+            <th>Omslag</th>
+            <th>Titel</th>
+            <th>Längd</th>
+            <th>Utgivningsår</th>
+            <th>Genre</th>
+            <th>Pris</th>
+            <th>Antal</th>
+        </tr>
+
+        <tbody ng-repeat="x in cart | filter:search">
+        <tr>
+            <td><img height="120px" src="{{x.coverStr}}" alt="image"/></td>
+            <td>{{ x.title }}</td>
+            <td>{{ x.length }}</td>
+            <td>{{ x.release_year }}</td>
+            <td>{{ x.genre }}</td>
+            <td>{{ x.price }}</td>
+            <td><span class="glyphicon glyphicon-minus"></span> {{x.quantity}} <span class="glyphicon glyphicon-plus"></span></td>
+        </tr>
+        </tbody>
+    </table>
