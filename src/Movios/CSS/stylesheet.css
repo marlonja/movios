@@ -106,11 +106,21 @@ a:hover {
 }
 
 #login a{
-	color: white;
+	background: #2BC1EB;
+	border: none;
+	color: white
 }
+
+
 
 #loginFields{
 	height: 30%;
+}
+
+#logInTxt:hover{
+	background: #2BC1EB;
+	border: none;
+	color: white
 }
 
 #userIcon{
@@ -123,6 +133,7 @@ a:hover {
 #userIcon:hover {
 	cursor: pointer;
 	color: grey;
+
 }
 
 #cartIcon{
@@ -134,7 +145,11 @@ a:hover {
 
 #cartIcon:hover {
 	cursor: pointer;
-	color: grey;
+}
+
+#cartText{
+	color: white;
+	text-transform: lowercase;
 }
 
 #footer{

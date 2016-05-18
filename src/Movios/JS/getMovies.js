@@ -2,6 +2,7 @@ var app = angular.module('test', []);
 app.controller('mainControl', function($http, $scope, $filter){
 
     $scope.cart = [];
+    $scope.counter = 0;
     var getEmailFromInput;
     var getPasswordFromInput;
     var urlBase="http://localhost:8080/api/movies/";
@@ -101,9 +102,9 @@ app.controller('mainControl', function($http, $scope, $filter){
     }
 
     $scope.addToCart = function(movie){
-        console.log("addToCart func")
         var found = false;
-
+        $scope.counter++;
+        console.log($scope.counter);
         //check quantity -- need to upgrade DB with quantity column!
         $scope.cart.forEach(function(item){
             if(item.id == movie.id){
@@ -113,34 +114,35 @@ app.controller('mainControl', function($http, $scope, $filter){
         });
         if(!found){
             $scope.cart.push(angular.extend({quantity: 1}, movie));
-            console.log($scope.cart)
+
+        }
+
+    };
+
+    $scope.removeItemFromCart = function(movie, index){
+
+        if(movie.quantity == 1){
+            $scope.cart.splice($scope.cart.indexOf(index), 1);
+        }else {
+            movie.quantity -=1;
+        }
+
+    };
+
+    $scope.addItemFromCart = function(movie){
+        if(movie.quantity == 0){
+            movie.quantity = 0;
+        }else {
+            movie.quantity +=1;
         }
     };
 
-    $scope.showCart = function(){
-        console.log(array);
-        var sum = 0;
-        for (var i = 0; i < array.length; i++) {
-            $http.get(urlBase+array[i]).success(function(data){
-
-                sum += parseInt(data.price);
-                var strAppendClick = "<td><button ng-> hej </button></td>";
-                //  var compiledstrAppendClick = $compile(strAppendClick);
-                $scope.sumScope = sum;
-                angular.element(document.getElementById('showMoviesInCart')).append('<tr><td>' + data.title +
-                    '<td>'+ data.price + '</td>');
-                //  compiledstrAppendClick);
-            });
+    $scope.countHowManyItemsInCart = function(){
+        var counter = 0;
+        for (i = 0; i < $scope.cart.length; i++){
+            counter++;
         }
-    };
-
-    $scope.removeItemFromCart = function(){
-        console.log("hej");
-    };
-
-    $scope.addItemFromCart = function(){
-        $scope.movieCount = array.length+1;
-    };
+    }
 
 
 
