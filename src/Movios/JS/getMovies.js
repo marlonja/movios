@@ -123,8 +123,11 @@ app.controller('mainControl', function($http, $scope, $filter){
 
         if(movie.quantity == 1){
             $scope.cart.splice($scope.cart.indexOf(index), 1);
+            $scope.counter -=1;
+
         }else {
             movie.quantity -=1;
+            $scope.counter -=1;
         }
 
     };
@@ -134,6 +137,8 @@ app.controller('mainControl', function($http, $scope, $filter){
             movie.quantity = 0;
         }else {
             movie.quantity +=1;
+            $scope.counter +=1;
+
         }
     };
 

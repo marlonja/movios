@@ -19,7 +19,7 @@
             <td>{{ x.release_year }}</td>
             <td>{{ x.genre }}</td>
             <td>{{ x.price }}</td>
-            <td><span ng-click="removeItemFromCart(x, $index)" class="glyphicon glyphicon-minus"></span> {{x.quantity}} <span ng-click="addItemFromCart(x)" class="glyphicon glyphicon-plus"></span></td>
+            <td><span id="removeFromCart" ng-click="removeItemFromCart(x, $index)" class="glyphicon glyphicon-minus"></span> {{x.quantity}} <span id="addToCart" ng-click="addItemFromCart(x)" class="glyphicon glyphicon-plus"></span></td>
         </tr>
         </tbody>
     </table>

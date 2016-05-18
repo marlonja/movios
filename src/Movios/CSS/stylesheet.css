@@ -119,6 +119,14 @@ a:hover {
 	color: white;
 }
 
+#removeFromCart{
+	cursor: pointer;
+}
+
+#addToCart{
+	cursor: pointer;
+}
+
 #loginFields{
 	height: 30%;
 }
