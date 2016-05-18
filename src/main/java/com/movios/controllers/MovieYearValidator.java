@@ -19,16 +19,13 @@ public final class MovieYearValidator {
     public static void validateYear(Integer year) {
         StringBuilder yearMessageBuilder = new StringBuilder();
 
-        InvalidYearFormatException invalidYearFormatException = null;
-
         if (YearNotFourDigits(year)) {
             yearMessageBuilder.append("Year doesn't contain 4 digits\n");
         } else {
             try {
-                invalidYearFormatException = new InvalidYearFormatException(yearMessageBuilder.toString());
-                throw invalidYearFormatException;
+                throw new InvalidYearFormatException(yearMessageBuilder.toString());
             } catch (InvalidYearFormatException e) {
-                GenericLogger.printErrorAndException(LOG_FILE_NAME, yearMessageBuilder.toString(), invalidYearFormatException);
+                GenericLogger.printErrorAndException(LOG_FILE_NAME, yearMessageBuilder.toString(), e);
             }
         }
         return;

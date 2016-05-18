@@ -1,19 +1,16 @@
 package com.movios.controllers;
 
-import java.util.ArrayList;
-
+import com.movios.models.UserModel;
+import com.movios.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.movios.models.UserModel;
-import com.movios.services.UserService;
+import java.util.ArrayList;
+
+import static com.movios.controllers.PasswordController.validatePassword;
+import static com.movios.controllers.PasswordHashing.passwordHashingSHA256;
 
 @RestController
 public class UserController {
@@ -23,12 +20,21 @@ public class UserController {
     @CrossOrigin
     @RequestMapping(value = "/users/", method = RequestMethod.POST)
     public void createUser(@RequestBody UserModel userModel) {
+
+        /*
+        String userPassword = userModel.getPassword();
+
+        validatePassword(userPassword);
+        userModel.setPassword(passwordHashingSHA256(userPassword));
+        */
         userService.saveUser(userModel);
     }
 
     @CrossOrigin
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
     public ResponseEntity<UserModel> readUser(@PathVariable Long id) {
+
+
         return new ResponseEntity<UserModel>(userService.readUsers(id), HttpStatus.OK);
     }
 
