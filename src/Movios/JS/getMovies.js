@@ -26,7 +26,7 @@ app.controller('mainControl', function($http, $scope, $filter){
                 }
             }
 
-            $scope.actionMovies = list;
+            $scope.moviesByGenre = list;
             console.log(list);
         });
     };

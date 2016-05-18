@@ -17,7 +17,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="JS/adminGetMovies.js"></script>
 
-	<div id="wrapper">
+
 		<div id="header">
 			<div id="search" class="text-center">
 				<input type="text" size="40" placeholder="Search..." ng-model="search">
@@ -31,12 +31,13 @@
 		<div class="text-center">
 			<form name="adminForm" ng-submit="submitForm()">
 				<div class="input-fields">
-					<h4>Lägg till film</h4>
+					<h1>LÄGG TILL FILM</h1>
+					<hr>
 					<input type="text" placeholder="Länk till bild" ng-model="addCover" required>
 					<input type="text" placeholder="Title" ng-model="addTitle" id="titleForm" required>
 					<input type="number" placeholder="Time" ng-model="addLength" required>
 					<input type="number" placeholder="Release year" minlength="4" maxlength="4" ng-model="addYear" required>
-					<textarea placeholder="Synopsis" ng-model="addSynopsis" required> </textarea>
+					<textarea id="txtArea" placeholder="Synopsis" ng-model="addSynopsis" required> </textarea>
 					<select ng-model="selectedGenre" ng-options="x for x in genres" required>
 						<option value="">Genre</option>
 					</select>
@@ -45,10 +46,11 @@
 					<button type="submit" value="OK" ng-disabled="adminForm.$invalid">OK</button>
 				</div>
 			</form>
+		</div>
+	</div>
+			<div class="table-responsive" id="adminTable">
 
-			<div class="table-responsive">
-
-				<table class="table table-striped">
+				<table class="table">
 					<thead>
 					<tr>
 						<th>Omslag</th>
@@ -115,19 +117,9 @@
 						</tbody>
 					</table>
 				</div>
-				</div>
-			</div>
-		</div>
 
 	<div id="footer"><a href="index.html">Home</a> | About | &copy 2016 movio.se</div>
 
-
-
-
-
-</div>
-
-</body>
 
 </body>
 </html>
