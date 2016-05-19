@@ -16,7 +16,6 @@ public final class PasswordController {
 
         boolean passwordHasFailed = false;
         StringBuilder passwordMessageBuilder = new StringBuilder();
-        InvalidPasswordException invalidPasswordException = null;
 
         if (passwordLengthShorterThanSix(password)) {
             passwordHasFailed = true;
@@ -34,10 +33,9 @@ public final class PasswordController {
         if (passwordHasFailed) {
 
             try {
-                invalidPasswordException = new InvalidPasswordException(passwordMessageBuilder.toString());
-                throw invalidPasswordException;
+                throw new InvalidPasswordException(passwordMessageBuilder.toString());
             } catch (InvalidPasswordException e) {
-                GenericLogger.printErrorAndException(LOG_FILE_NAME, passwordMessageBuilder.toString(), invalidPasswordException);
+                GenericLogger.printErrorAndException(LOG_FILE_NAME, passwordMessageBuilder.toString(), e);
             }
         }
 
