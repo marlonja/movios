@@ -92,6 +92,18 @@ app.controller('mainControl', function($http, $scope, $filter){
 
     };
 
+    $scope.hideAll = function(){
+        $scope.hideContainer = false;
+        $scope.moviesLink = false;
+        $scope.actionLink = false;
+        $scope.dramaLink= false;
+        $scope.newsLink = false;
+        $scope.aboutLink = false;
+        $scope.contactLink = false;
+        $scope.cartLink=false;
+
+    }
+
     $scope.reloadIndex = function(){
         window.location.reload(false);
     }

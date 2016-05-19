@@ -10,7 +10,7 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/movios
     username: root	
-    password: sqlpassword
+    password: aenima66
   jackson:
     serialization:
       fail-on-empty-beans: false
