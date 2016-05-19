@@ -26,6 +26,19 @@ public class MovieModel implements Serializable {
     private Double price;
     private Integer creation_date;
     private String coverStr;
+    private Integer amount;
+
+    public MovieModel() {
+
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
 
     public String getCoverStr() {
         return coverStr;
@@ -33,22 +46,6 @@ public class MovieModel implements Serializable {
 
     public void setCoverStr(String coverStr) {
         this.coverStr = coverStr;
-    }
-
-    @Lob
-    @Column(length = 100000)
-    private byte[] cover;
-
-    public byte[] getCover() {
-        return cover;
-    }
-
-    public void setCover(byte[] cover) {
-        this.cover = cover;
-    }
-
-    public MovieModel() {
-
     }
 
     public Long getId() {

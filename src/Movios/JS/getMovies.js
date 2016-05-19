@@ -3,17 +3,16 @@ app.controller('mainControl', function($http, $scope, $filter){
 
     $scope.cart = [];
     $scope.counter = 0;
+    $scope.sum = 0;
     var getEmailFromInput;
     var getPasswordFromInput;
     var urlBase="http://localhost:8080/api/movies/";
     var urlUser="http://localhost:8080/api/users/";
     getAllMovies();
 
-
     function getAllMovies(){
         $http.get(urlBase).success(function(data){
-            $scope.movies = data;
-
+                $scope.movies = data;
         });
     };
 
@@ -22,7 +21,7 @@ app.controller('mainControl', function($http, $scope, $filter){
         $http.get(urlBase).success(function(data){
             var list = [];
             for(i = 0; i<data.length; i++){
-                if(data[i].genre == genre){
+                if(data[i].genre == genre && data[i].amount > 0){
                     list.push(data[i]);
                 }
             }
@@ -104,8 +103,8 @@ app.controller('mainControl', function($http, $scope, $filter){
     $scope.addToCart = function(movie){
         var found = false;
         $scope.counter++;
-        console.log($scope.counter);
-        //check quantity -- need to upgrade DB with quantity column!
+        $scope.sum += movie.price;
+
         $scope.cart.forEach(function(item){
             if(item.id == movie.id){
                 item.quantity++;
@@ -115,29 +114,37 @@ app.controller('mainControl', function($http, $scope, $filter){
         if(!found){
             $scope.cart.push(angular.extend({quantity: 1}, movie));
 
+            console.log($scope.sum);
         }
+        
 
     };
 
     $scope.removeItemFromCart = function(movie, index){
 
         if(movie.quantity == 1){
-            $scope.cart.splice($scope.cart.indexOf(index), 1);
+            $scope.cart.splice(index, 1);
+            $scope.quantity = 0;
             $scope.counter -=1;
+            $scope.sum -= movie.price;
 
         }else {
             movie.quantity -=1;
             $scope.counter -=1;
+            $scope.sum -= movie.price;
+
         }
 
     };
 
-    $scope.addItemFromCart = function(movie){
+    $scope.addItemToCart = function(movie){
         if(movie.quantity == 0){
             movie.quantity = 0;
         }else {
             movie.quantity +=1;
             $scope.counter +=1;
+            $scope.sum += movie.price;
+
 
         }
     };
@@ -148,6 +155,7 @@ app.controller('mainControl', function($http, $scope, $filter){
             counter++;
         }
     }
+
 
 
 

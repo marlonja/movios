@@ -37,11 +37,12 @@
 					<input type="text" placeholder="Title" ng-model="addTitle" id="titleForm" required>
 					<input type="number" placeholder="Time" ng-model="addLength" required>
 					<input type="number" placeholder="Release year" minlength="4" maxlength="4" ng-model="addYear" required>
-					<textarea id="txtArea" placeholder="Synopsis" ng-model="addSynopsis" required> </textarea>
+					<textarea class="txtArea" placeholder="Synopsis" ng-model="addSynopsis" required> </textarea>
 					<select ng-model="selectedGenre" ng-options="x for x in genres" required>
 						<option value="">Genre</option>
 					</select>
 					<input type="number" placeholder="Price" ng-model="addPrice" required>
+					<input type="number" placeholder="Amount" ng-model="addAmount">
 
 					<button type="submit" value="OK" ng-disabled="adminForm.$invalid">OK</button>
 				</div>
@@ -60,6 +61,7 @@
 						<th>Synopsis</th>
 						<th>Genre</th>
 						<th>Pris</th>
+						<th>Amount</th>
 						<th>Ta bort</th>
 						<th>Uppdatera</th>
 
@@ -85,22 +87,26 @@
 									<td ng-show="editorEnable"><input type="number" minlength="4" maxlength="4" placeholder="{{x.release_year}}" ng-model="newYear"></td>
 
 									<td ng-hide="editorEnable"> {{x.synopsis}} </td>
-									<td ng-show="editorEnable"><input type="text" placeholder="{{x.synopsis}}" ng-model="newSynopsis"></td>
+									<td ng-show="editorEnable">
+										<textarea class="txtArea" placeholder="{{x.synopsis}}" ng-model="newSynopsis" required> </textarea>
+									</td>
 
 									<td ng-hide="editorEnable"> {{x.genre}} </td>
 									<td ng-show="editorEnable"><select ng-model="newGenre" ng-options="x for x in genres" required>
 										<option value="">{{x.genre}}</option>
 									</select></td>
 
-									<td ng-hide="editorEnable"> {{x.price}}
+									<td ng-hide="editorEnable"> {{x.price}}</td>
+									<td ng-show="editorEnable"><input type="number" placeholder="{{x.price}}" ng-model="newPrice"></td>
 
-									</td>
+									<td ng-hide="editorEnable"> {{x.amount}} </td>
+									<td ng-show="editorEnable"><input type="number" placeholder="{{x.amount}}" ng-model="newAmount"></td>
 
 									<input type="hidden" ng-model="newCreationDate" placeholder="{{x.creation_date}}">
 
 
-									<td ng-show="editorEnable"><input type="number" placeholder="{{x.price}}" ng-model="newPrice">
-										<input type="submit" value="Update" ng-click="updateMovie(x, newTitle, newCover, newLength, newYear, newSynopsis, newGenre, newPrice, newCreationDate)">
+									<td ng-show="editorEnable">
+										<input type="submit" value="Update" ng-click="updateMovie(x, newTitle, newCover, newLength, newYear, newSynopsis, newGenre, newPrice, newAmount, newCreationDate)">
 									</td>
 
 

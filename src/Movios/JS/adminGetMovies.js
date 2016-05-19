@@ -28,6 +28,7 @@ app.controller('mainControl', function($http, $scope, $filter){
                 synopsis: $scope.addSynopsis,
                 genre: $scope.selectedGenre.toUpperCase(),
                 price: $scope.addPrice,
+                amount: $scope.addAmount,
                 creation_date: today
 
             }).success(function(){
@@ -46,16 +47,14 @@ app.controller('mainControl', function($http, $scope, $filter){
         }
     };
 
-    $scope.updateMovie = function(movieObj, newTitle, newCover, newLength, newYear, newSynopsis, newGenre, newPrice, newCreationDate){
+    $scope.updateMovie = function(movieObj, newTitle, newCover, newLength, newYear, newSynopsis, newGenre, newPrice, newAmount, newCreationDate){
 
         if(newTitle == undefined){
             newTitle = movieObj.title;
         }
-
         if(newCover == undefined){
             newCover = movieObj.coverStr;
         }
-
         if(newLength == undefined){
             newLength = movieObj.length;
         }
@@ -71,11 +70,9 @@ app.controller('mainControl', function($http, $scope, $filter){
         if(newPrice == undefined){
             newPrice = movieObj.price;
         }
-
-        if(newPrice == undefined){
-            newPrice = movieObj.price;
+        if(newAmount == undefined){
+            newAmount = movieObj.amount;
         }
-
         if(newCreationDate == undefined){
             newCreationDate = movieObj.creation_date;
         }
@@ -89,6 +86,7 @@ app.controller('mainControl', function($http, $scope, $filter){
             synopsis: newSynopsis,
             genre: newGenre.toUpperCase(),
             price: newPrice,
+            amount: newAmount,
             creation_date: newCreationDate
 
         }).success(function(){

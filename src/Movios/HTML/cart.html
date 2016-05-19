@@ -12,14 +12,16 @@
         </tr>
 
         <tbody ng-repeat="x in cart | filter:search">
-        <tr>
-            <td><img height="120px" src="{{x.coverStr}}" alt="image"/></td>
-            <td>{{ x.title }}</td>
-            <td>{{ x.length }}</td>
-            <td>{{ x.release_year }}</td>
-            <td>{{ x.genre }}</td>
-            <td>{{ x.price }}</td>
-            <td><span id="removeFromCart" ng-click="removeItemFromCart(x, $index)" class="glyphicon glyphicon-minus"></span> {{x.quantity}} <span id="addToCart" ng-click="addItemFromCart(x)" class="glyphicon glyphicon-plus"></span></td>
-        </tr>
+            <tr>
+                <td><img height="120px" src="{{x.coverStr}}" alt="image"/></td>
+                <td>{{ x.title }}</td>
+                <td>{{ x.length }}</td>
+                <td>{{ x.release_year }}</td>
+                <td>{{ x.genre }}</td>
+                <td>{{ x.price }}</td>
+                <td><span id="removeFromCart" ng-click="removeItemFromCart(x, $index)" class="glyphicon glyphicon-minus"></span> {{x.quantity}} <span id="addToCart" ng-click="addItemToCart(x)" class="glyphicon glyphicon-plus"></span></td>
+            </tr>
         </tbody>
     </table>
+    <hr>
+    <p style="float: right; padding-right: 18%" ng-show="sum > 0">Summa: {{ sum }} kr</p>
