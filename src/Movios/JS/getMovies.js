@@ -1,4 +1,4 @@
-var app = angular.module('test', []);
+var app = angular.module('moviosApp', []);
 app.controller('mainControl', function($http, $scope, $filter){
 
     $scope.cart = [];
