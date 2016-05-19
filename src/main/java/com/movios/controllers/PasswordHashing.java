@@ -1,9 +1,5 @@
 package com.movios.controllers;
 
-/**
- * Created by W7 on 2016-05-18.
- */
-
 import com.movios.models.ModelExceptions.HashMismatchException;
 
 import java.io.UnsupportedEncodingException;
