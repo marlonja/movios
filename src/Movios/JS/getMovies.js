@@ -69,18 +69,18 @@ app.controller('mainControl', function ($http, $scope, $filter) {
         $http.get(urlUser).success(function (data) {
 
             for (i = 0; i < data.length; i++) {
-                //if (data[i].email == getEmailFromInput && data[i].password == getPasswordFromInput) {
+                if (data[i].email == getEmailFromInput && data[i].password == getPasswordFromInput) {
                     angular.element(document.getElementById('loggedIn')).append('<p>' + "Välkommen, " + data[i].first_name + '</p>');
                     $scope.showLoginFields = false;
                     $scope.hideLogInTxt = true;
                     $scope.hideCreateAccountTxt = true;
                     $scope.showLogOutTxt = true;
                     boolean = false;
-                   // break;
-                //} else {
-                    //boolean = true;
+                    break;
+                } else {
+                    boolean = true;
                 }
-            //}
+            }
             if (boolean) {
                 alert("Inloggning misslyckades, försök igen");
             }
@@ -127,6 +127,4 @@ app.controller('mainControl', function ($http, $scope, $filter) {
     $scope.addItemFromCart = function () {
         $scope.movieCount = array.length + 1;
     };
-
-
 });
