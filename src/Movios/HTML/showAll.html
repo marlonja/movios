@@ -10,7 +10,8 @@
 						<th>Pris</th>
 					</tr>
 
-					<tbody ng-repeat="x in movies | filter:search">
+					<tbody ng-repeat="x in movies | filter:search" ng-if="x.amount > 0">
+
 						<tr>
 							<td><img height="120px" src="{{x.coverStr}}" alt="image"/></td>
 							<td>{{ x.title }}</td>
@@ -21,5 +22,6 @@
 							<td><input type="submit" value="Lägg i kundkorg" ng-click="addToCart(x)"></td>
 							<td><button type="button" data-toggle="modal" data-target="#modal" ng-click="readMore(x.id)">Läs mer</button></td>
 						</tr>
+
 					</tbody>
 </table>
