@@ -1,6 +1,6 @@
 <!DOCTYPE>
 <html>
-<title>Movio</title>
+<title>Movios</title>
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="CSS/stylesheet.css"/>
@@ -14,7 +14,7 @@
 
 </head>
 
-<body ng-app="test" ng-controller="mainControl">
+<body ng-app="moviosApp" ng-controller="mainControl">
 <script type="text/javascript" src="JS/getMovies.js"></script>
 
 
@@ -105,13 +105,22 @@
 					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">Close</span></button>
 				</div>
 				<div class="modal-body">
-					<div class="modal-content">
-						<h3 class="modal-title text-center">{{ moreInfo.title }}</h3> <br>
-						<h4 class="text-center">{{ moreInfo.price }} kr</h4>
+					<div>
+
+
+
 
 						<img height="370" style="padding: 20px;" src="{{moreInfo.coverStr}}" alt="image"/>
 
-						{{ moreInfo.synopsis }}
+						<div class="modalSynopsis"><span>
+							<h3>{{ moreInfo.title }}</h3> <br>
+						<h4 style="color: orangered; font-style: italic";>{{ moreInfo.price }} kr</h4>
+							{{ moreInfo.synopsis }}
+						<br><br>
+						</span>
+
+						</div>
+
 
 
 					</div>

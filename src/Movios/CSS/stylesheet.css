@@ -164,6 +164,26 @@ a:hover {
 }
 
 #modal .modal-dialog  {
-	width:100%;
+	width:40%;
+}
+
+#modalTitle{
+	float: left;
+}
+
+.modalSynopsis{
+	width: 60%;
+	left: 275px;
+	position: relative;
+
+}
+
+.modalSynopsis span {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+
+
+
 }
 
