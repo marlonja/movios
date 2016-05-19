@@ -16,8 +16,8 @@ body{
 th, td {
 	padding: 5px !important;
 	text-align: left;
-	width: 80px;
-	min-width: 160px;
+	width: 100px;
+	min-width: 80px;
 }
 
 
@@ -86,18 +86,17 @@ a:hover {
 
 #adminContainer{
 	width: 100%;
-
 }
 
 #adminTable{
 	margin: auto;
-	width: 80%;
+	width: 85%;
 	padding: 10px;
 }
 
 .txtArea {
 	padding:0px;
-	width:300px;
+	width:200px;
 	height:26px;
 	margin: 0 0 -8px -1px;
 }
@@ -150,20 +149,22 @@ a:hover {
 	padding:5px;
 }
 
-
 #wrapper{
 	width:100%;
 	margin:0 auto;
 	text-align:left;
 }
 
-@media screen and (min-width: 768px) {
+.adminInput{
+	width: 140px;
+}
 
+
+@media screen and (min-width: 700px) {
 	#modal .modal-dialog  {width:900px;}
-
 }
 
 #modal .modal-dialog  {
-	width:100%;
+	width:60%;
 }
 

@@ -21,13 +21,26 @@ app.controller('mainControl', function($http, $scope, $filter){
         $http.get(urlBase).success(function(data){
             var list = [];
             for(i = 0; i<data.length; i++){
+                if(data[i].genre == genre.genre && data[i].amount > 0){
+                    list.push(data[i]);
+                }
+                console.log(list);
+            }
+
+            $scope.moviesByGenre = list;
+        });
+    };
+
+    $scope.getMoviesByGenre2 = function(genre){
+        console.log(genre);
+        $http.get(urlBase).success(function(data){
+            var list = [];
+            for(i = 0; i<data.length; i++){
                 if(data[i].genre == genre && data[i].amount > 0){
                     list.push(data[i]);
                 }
             }
-
-            $scope.moviesByGenre = list;
-            console.log(list);
+            $scope.moviesByGenre2 = list;
         });
     };
 
@@ -44,7 +57,6 @@ app.controller('mainControl', function($http, $scope, $filter){
     $scope.newsMovies = function () {
         var today = $filter('date')(new Date(),'yyMMdd');
         var lastMonth = today-100;
-        console.log(lastMonth);
 
         $http.get(urlBase).success(function(data){
             var list = [];
@@ -53,7 +65,6 @@ app.controller('mainControl', function($http, $scope, $filter){
                     list.push(data[i])
                 }
             }
-            console.log(list)
             $scope.moviesByNews = list;
         }).error(function(){
                 alert('Error loading data');
@@ -96,12 +107,16 @@ app.controller('mainControl', function($http, $scope, $filter){
         $scope.hideContainer = false;
         $scope.moviesLink = false;
         $scope.actionLink = false;
-        $scope.dramaLink= false;
+        $scope.dramaLink = false;
+        $scope.animationLink = false;
+        $scope.comedyLink = false;
+        $scope.fantasyLink = false;
+        $scope.horroLink = false;
+        $scope.scifiLink = false;
         $scope.newsLink = false;
         $scope.aboutLink = false;
         $scope.contactLink = false;
         $scope.cartLink=false;
-
     }
 
     $scope.reloadIndex = function(){
@@ -113,22 +128,10 @@ app.controller('mainControl', function($http, $scope, $filter){
     }
 
     $scope.addToCart = function(movie){
-        var found = false;
         $scope.counter++;
         $scope.sum += movie.price;
 
-        $scope.cart.forEach(function(item){
-            if(item.id == movie.id){
-                item.quantity++;
-                found = true;
-            }
-        });
-        if(!found){
-            $scope.cart.push(angular.extend({quantity: 1}, movie));
-
-            console.log($scope.sum);
-        }
-        
+        $scope.cart.push(angular.extend({quantity: 1}, movie));
 
     };
 
@@ -160,15 +163,5 @@ app.controller('mainControl', function($http, $scope, $filter){
 
         }
     };
-
-    $scope.countHowManyItemsInCart = function(){
-        var counter = 0;
-        for (i = 0; i < $scope.cart.length; i++){
-            counter++;
-        }
-    }
-
-
-
 
 });

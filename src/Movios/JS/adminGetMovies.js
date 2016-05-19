@@ -39,6 +39,7 @@ app.controller('mainControl', function($http, $scope, $filter){
                 $scope.addSynopsis = "";
                 $scope.addGenre = "";
                 $scope.addPrice = "";
+                $scope.addAmount = "";
                 getAllMovies();
             })
                 .error(function() {
