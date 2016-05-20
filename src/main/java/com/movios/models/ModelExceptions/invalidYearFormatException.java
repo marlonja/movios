@@ -1,8 +1,5 @@
 package com.movios.models.ModelExceptions;
 
-/**
- * Created by Lord Metal on 2016-05-14.
- */
 public class InvalidYearFormatException extends Exception {
 
 

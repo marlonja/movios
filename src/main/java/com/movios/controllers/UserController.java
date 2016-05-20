@@ -27,9 +27,9 @@ public class UserController {
     }
 
     @CrossOrigin
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
-    public ResponseEntity<UserModel> readUser(@PathVariable Long id) {
-        return new ResponseEntity<UserModel>(userService.readUsers(id), HttpStatus.OK);
+    @RequestMapping(value = "/users/{email}", method = RequestMethod.GET)
+    public ResponseEntity<UserModel> readUser(@PathVariable String email) {
+        return new ResponseEntity<UserModel>(userService.readUsers(email), HttpStatus.OK);
     }
 
     @CrossOrigin
