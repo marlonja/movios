@@ -70,7 +70,7 @@
 					</thead>
 
 						<tbody>
-							<form name="updateForm">
+							<form>
 								<tr ng-repeat="x in movies | filter:search">
 									<td style="display:none" id="movieID" ng-model="id" >{{x.id}}</td>
 
@@ -84,8 +84,7 @@
 									<td ng-show="editorEnable">	<input type="number" style="width: 60px;" placeholder="{{x.length}}" ng-model="newLength"></td>
 
 									<td ng-hide="editorEnable">{{x.release_year}}</td>
-									<td ng-show="editorEnable"><input type="number" style="width: 60px;" minlength="4" maxlength="4" min="1900" max={{year}} placeholder="{{x.release_year}}" ng-model="newYear"></td>
-									<!-- <p ng-show="updateForm.newYear.$invalid && !updateForm.newYear.$pristine" class="help-block">Skriv in utgivningsår mellan 1900-2016</p> -->
+									<td ng-show="editorEnable"><input type="number" style="width: 60px;" minlength="4" maxlength="4" min="1900" max={{year}} placeholder="{{x.release_year}}" ng-model="newYear" required></td>
 
 									<td ng-hide="editorEnable"> {{x.synopsis}} </td>
 									<td ng-show="editorEnable">
