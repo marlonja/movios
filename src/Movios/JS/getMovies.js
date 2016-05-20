@@ -119,11 +119,19 @@ app.controller('mainControl', function($http, $scope, $filter){
     }
 
     $scope.addToCart = function(movie){
+        var found = false;
         $scope.counter++;
         $scope.sum += movie.price;
 
-        $scope.cart.push(angular.extend({quantity: 1}, movie));
-
+        $scope.cart.forEach(function (item) {
+            if(item.id == movie.id){
+                item.quantity++;
+                found = true;
+            }
+        });
+        if(!found) {
+            $scope.cart.push(angular.extend({quantity: 1}, movie));
+        }
     };
 
     $scope.removeItemFromCart = function(movie, index){
