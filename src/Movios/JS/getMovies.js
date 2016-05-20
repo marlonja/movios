@@ -119,18 +119,27 @@ app.controller('mainControl', function($http, $scope, $filter){
     }
 
     $scope.addToCart = function(movie){
-        var found = false;
-        $scope.counter++;
         $scope.sum += movie.price;
+        var found = false;
 
         $scope.cart.forEach(function (item) {
             if(item.id == movie.id){
-                item.quantity++;
-                found = true;
+                if(item.quantity >= movie.amount){
+                    found = true;
+                    alert("The stock is empty");
+
+                }else if(item.quantity <= movie.amount){
+                    $scope.counter++;
+                    item.quantity++;
+                    found = true;
+                }
             }
         });
+
         if(!found) {
             $scope.cart.push(angular.extend({quantity: 1}, movie));
+            $scope.counter++;
+
         }
     };
 
@@ -152,16 +161,13 @@ app.controller('mainControl', function($http, $scope, $filter){
     };
 
     $scope.increaseItemToCart = function(movie){
-        if(movie.quantity == 0){
-            movie.quantity = 0;
-        }else {
-            movie.quantity +=1;
-            $scope.counter +=1;
-            $scope.sum += movie.price;
-
-
+             if(movie.quantity < movie.amount){
+                movie.quantity +=1;
+                $scope.counter +=1;
+                $scope.sum += movie.price;
+             }else {
+                 alert("The stock is empty");
+             }
         }
-    };
-
 });
 
