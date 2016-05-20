@@ -65,7 +65,7 @@ app.controller('mainControl', function($http, $scope, $filter){
         getEmailFromInput = $scope.email;
         getPasswordFromInput = $scope.password;
         console.log(getEmailFromInput);
-        console.log(getPasswordFromInput);
+        console.log(getPasswordFromInput);        
         var boolean = false;
         $http.get(urlUser).success(function(data){
 
@@ -76,7 +76,15 @@ app.controller('mainControl', function($http, $scope, $filter){
                     $scope.hideLogInTxt = true;
                     $scope.hideCreateAccountTxt = true;
                     $scope.showLogOutTxt = true;
+                    $scope.accountShow = true;
                     boolean = false;
+
+                    var user = data[i];
+                    $scope.user = user.id;
+                    
+                    var userObj = data[i];
+                    $scope.userObj = userObj;
+
                     break;
                 }else{
                     boolean = true;
@@ -96,18 +104,13 @@ app.controller('mainControl', function($http, $scope, $filter){
     $scope.hideAll = function(){
         $scope.hideContainer = false;
         $scope.moviesLink = false;
-        $scope.actionLink = false;
-        $scope.dramaLink = false;
-        $scope.animationLink = false;
-        $scope.comedyLink = false;
-        $scope.fantasyLink = false;
-        $scope.horroLink = false;
-        $scope.scifiLink = false;
         $scope.newsLink = false;
         $scope.aboutLink = false;
         $scope.contactLink = false;
         $scope.cartLink=false;
         $scope.genreLink = false;
+        $scope.accountLink = false;
+        $scope.updateAccountLink = false;
     }
 
     $scope.reloadIndex = function(){

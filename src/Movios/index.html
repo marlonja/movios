@@ -87,6 +87,19 @@
 					</li>
 					<li><a href="#" ng-click="hideAll(); newsLink = true; newsMovies();">Nyheter</a></li>
 					<li><a href="#" ng-click="hideAll(); contactLink = true;">Kontakt</a></li>
+
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" ng-show="accountShow">Ditt konto <span class="caret"></span></a>
+						<ul class="dropdown-menu" >
+
+							<li><a href="#" ng-click="hideAll(); accountLink = true;">Hem</a></li>
+							<li><a href="#" ng-click="hideAll(); updateAccountLink = true;">Ändra kontaktuppgifter</a></li>
+
+
+
+
+
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</nav>
@@ -97,13 +110,12 @@
 
 		<div ng-include="'HTML/showAll.html'" ng-show="moviesLink"></div>
 		<div ng-include="'HTML/genre.html'" ng-show="genreLink"></div>
-
-
-
 		<div ng-include="'HTML/news.html'" ng-show="newsLink"></div>
 		<div ng-include="'HTML/about.html'" ng-show="aboutLink"></div>
 		<div ng-include="'HTML/contact.html'" ng-show="contactLink"></div>
 		<div ng-include="'HTML/cart.html'" ng-show="cartLink"></div>
+		<div ng-include="'HTML/account.html'" ng-show="accountLink"></div>
+		<div ng-include="'HTML/updateAccount.html'" ng-show="updateAccountLink"></div>
 
 
 	</div>
