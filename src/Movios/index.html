@@ -74,15 +74,13 @@
 						<ul class="dropdown-menu" >
 
 							<li><a href="#" ng-click="hideAll(); moviesLink = true;">Visa alla</a></li>
-							<li><a href="#" ng-click="hideAll(); actionLink = true; getMoviesByGenre('ACTION')">Action</a></li>
-							<li><a href="#" ng-click="hideAll(); dramaLink = true; getMoviesByGenre('DRAMA')">Drama</a></li>
-							<li><a href="#" ng-click="hideAll(); animationLink = true; getMoviesByGenre('ANIMATION')">Animation</a></li>
-							<li><a href="#" ng-click="hideAll(); comedyLink = true; getMoviesByGenre('COMEDY')">Comedy</a></li>
-							<li><a href="#" ng-click="hideAll(); fantasyLink = true; getMoviesByGenre('FANTASY')">Fantasy</a></li>
-							<li><a href="#" ng-click="hideAll(); scifiLink = true; getMoviesByGenre('SCI-FI')">Sci-Fi</a></li>
-							<li><a href="#" ng-click="hideAll(); horrorLink = true; getMoviesByGenre('HORROR')">Horror</a></li>
-
-
+							<li><a href="#" ng-click="hideAll(); genreLink = true; getMoviesByGenre('ACTION')">Action</a></li>
+							<li><a href="#" ng-click="hideAll(); genreLink = true; getMoviesByGenre('DRAMA')">Drama</a></li>
+							<li><a href="#" ng-click="hideAll(); genreLink = true; getMoviesByGenre('ANIMATION')">Animation</a></li>
+							<li><a href="#" ng-click="hideAll(); genreLink = true; getMoviesByGenre('COMEDY')">Comedy</a></li>
+							<li><a href="#" ng-click="hideAll(); genreLink = true; getMoviesByGenre('FANTASY')">Fantasy</a></li>
+							<li><a href="#" ng-click="hideAll(); genreLink = true; getMoviesByGenre('SCI-FI')">Sci-Fi</a></li>
+							<li><a href="#" ng-click="hideAll(); genreLink = true; getMoviesByGenre('HORROR')">Horror</a></li>
 
 
 						</ul>
@@ -98,16 +96,8 @@
 	<div id="container" ng-hide="hideContainer" align="center">
 
 		<div ng-include="'HTML/showAll.html'" ng-show="moviesLink"></div>
-		<div ng-include="'HTML/GENRES/action.html'" ng-show="actionLink"></div>
-		<div ng-include="'HTML/GENRES/drama.html'" ng-show="dramaLink"></div>
-		<div ng-include="'HTML/GENRES/animation.html'" ng-show="animationLink"></div>
-		<div ng-include="'HTML/GENRES/comedy.html'" ng-show="comedyLink"></div>
-		<div ng-include="'HTML/GENRES/fantasy.html'" ng-show="fantasyLink"></div>
-		<div ng-include="'HTML/GENRES/scifi.html'" ng-show="scifiLink"></div>
-		<div ng-include="'HTML/GENRES/horror.html'" ng-show="horrorLink"></div>
+		<div ng-include="'HTML/genre.html'" ng-show="genreLink"></div>
 
-
-		<div ng-include="'HTML/GENRES/genre.html'" ng-show="genreLink"></div>
 
 
 		<div ng-include="'HTML/news.html'" ng-show="newsLink"></div>

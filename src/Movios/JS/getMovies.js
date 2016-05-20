@@ -17,22 +17,8 @@ app.controller('mainControl', function($http, $scope, $filter){
     };
 
     $scope.getMoviesByGenre = function(genre){
-        console.log(genre);
-        $http.get(urlBase).success(function(data){
-            var list = [];
-            for(i = 0; i<data.length; i++){
-                if(data[i].genre == genre.genre && data[i].amount > 0){
-                    list.push(data[i]);
-                }
-                console.log(list);
-            }
-
-            $scope.moviesByGenre = list;
-        });
-    };
-
-    $scope.getMoviesByGenre2 = function(genre){
-        console.log(genre);
+        $scope.found = false;
+        $scope.getGenre = genre;
         $http.get(urlBase).success(function(data){
             var list = [];
             for(i = 0; i<data.length; i++){
@@ -40,7 +26,11 @@ app.controller('mainControl', function($http, $scope, $filter){
                     list.push(data[i]);
                 }
             }
-            $scope.moviesByGenre2 = list;
+
+            if(list.length == 0) {
+                $scope.found = true;
+            }
+            $scope.moviesByGenre = list;
         });
     };
 
@@ -117,6 +107,7 @@ app.controller('mainControl', function($http, $scope, $filter){
         $scope.aboutLink = false;
         $scope.contactLink = false;
         $scope.cartLink=false;
+        $scope.genreLink = false;
     }
 
     $scope.reloadIndex = function(){
@@ -152,7 +143,7 @@ app.controller('mainControl', function($http, $scope, $filter){
 
     };
 
-    $scope.addItemToCart = function(movie){
+    $scope.increaseItemToCart = function(movie){
         if(movie.quantity == 0){
             movie.quantity = 0;
         }else {
@@ -165,3 +156,4 @@ app.controller('mainControl', function($http, $scope, $filter){
     };
 
 });
+
