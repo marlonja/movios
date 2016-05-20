@@ -17,7 +17,7 @@ app.controller('mainControl', function($http, $scope, $filter){
     };
 
     $scope.getMoviesByGenre = function(genre){
-        $scope.found = false;
+        $scope.foundinStock = false;
         $scope.getGenre = genre;
         $http.get(urlBase).success(function(data){
             var list = [];
@@ -28,7 +28,7 @@ app.controller('mainControl', function($http, $scope, $filter){
             }
 
             if(list.length == 0) {
-                $scope.found = true;
+                $scope.foundinStock = true;
             }
             $scope.moviesByGenre = list;
         });
@@ -122,18 +122,27 @@ app.controller('mainControl', function($http, $scope, $filter){
     }
 
     $scope.addToCart = function(movie){
-        var found = false;
-        $scope.counter++;
         $scope.sum += movie.price;
+        var found = false;
 
         $scope.cart.forEach(function (item) {
             if(item.id == movie.id){
-                item.quantity++;
-                found = true;
+                if(item.quantity >= movie.amount){
+                    found = true;
+                    alert("Det finns inte fler varor i lagret");
+
+                }else if(item.quantity <= movie.amount){
+                    $scope.counter++;
+                    item.quantity++;
+                    found = true;
+                }
             }
         });
+
         if(!found) {
             $scope.cart.push(angular.extend({quantity: 1}, movie));
+            $scope.counter++;
+
         }
     };
 
@@ -155,16 +164,13 @@ app.controller('mainControl', function($http, $scope, $filter){
     };
 
     $scope.increaseItemToCart = function(movie){
-        if(movie.quantity == 0){
-            movie.quantity = 0;
-        }else {
-            movie.quantity +=1;
-            $scope.counter +=1;
-            $scope.sum += movie.price;
-
-
+             if(movie.quantity < movie.amount){
+                movie.quantity +=1;
+                $scope.counter +=1;
+                $scope.sum += movie.price;
+             }else {
+                 alert("Det finns inte fler varor i lagret");
+             }
         }
-    };
-
 });
 
