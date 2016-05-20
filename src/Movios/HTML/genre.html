@@ -21,6 +21,7 @@
         <td>{{ x.genre }}</td>
         <td>{{ x.price }}</td>
         <td><input type="submit" value="Lägg i kundkorg" ng-click="addToCart(x)"></td>
+
         <td><button type="button" data-toggle="modal" data-target="#modal" ng-click="readMore(x.id)">Läs mer</button></td>
     </tr>
     </tbody>
@@ -28,5 +29,5 @@
 
 <br><br>
 
-<p ng-if="found == true ">Vi har för tillfället inga filmer med den här genren</p>
+<p ng-if="foundinStock == true ">Vi har för tillfället inga filmer med den här genren</p>
 

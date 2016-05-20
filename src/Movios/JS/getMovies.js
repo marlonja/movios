@@ -17,7 +17,7 @@ app.controller('mainControl', function($http, $scope, $filter){
     };
 
     $scope.getMoviesByGenre = function(genre){
-        $scope.found = false;
+        $scope.foundinStock = false;
         $scope.getGenre = genre;
         $http.get(urlBase).success(function(data){
             var list = [];
@@ -28,7 +28,7 @@ app.controller('mainControl', function($http, $scope, $filter){
             }
 
             if(list.length == 0) {
-                $scope.found = true;
+                $scope.foundinStock = true;
             }
             $scope.moviesByGenre = list;
         });
@@ -126,7 +126,7 @@ app.controller('mainControl', function($http, $scope, $filter){
             if(item.id == movie.id){
                 if(item.quantity >= movie.amount){
                     found = true;
-                    alert("The stock is empty");
+                    alert("Det finns inte fler varor i lagret");
 
                 }else if(item.quantity <= movie.amount){
                     $scope.counter++;
@@ -166,7 +166,7 @@ app.controller('mainControl', function($http, $scope, $filter){
                 $scope.counter +=1;
                 $scope.sum += movie.price;
              }else {
-                 alert("The stock is empty");
+                 alert("Det finns inte fler varor i lagret");
              }
         }
 });
