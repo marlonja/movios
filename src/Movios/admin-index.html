@@ -34,17 +34,18 @@
 					<h1>LÄGG TILL FILM</h1>
 					<hr>
 					<input type="text" class="adminInput" placeholder="Länk till bild" ng-model="addCover" required>
-					<input type="text" class="adminInput" placeholder="Title" ng-model="addTitle" id="titleForm" required>
-					<input type="number" class="adminInput" placeholder="Time" ng-model="addLength" required>
-					<input type="number" class="adminInput" placeholder="Release year" minlength="4" maxlength="4" ng-model="addYear" required>
+					<input type="text" class="adminInput" placeholder="Titel" ng-model="addTitle" id="titleForm" required>
+					<input type="number" class="adminInput" placeholder="Längd" ng-model="addLength" required>
+					<input type="number" class="adminInput" placeholder="Utgivningsår" minlength="4" maxlength="4" min="1900" max={{year}} ng-model="addYear" required>
 					<textarea class="txtArea" class="adminInput" placeholder="Synopsis" ng-model="addSynopsis" required> </textarea>
 					<select ng-model="selectedGenre" ng-options="x for x in genres" required>
 						<option value="">Genre</option>
 					</select>
-					<input type="number" class="adminInput" placeholder="Price" ng-model="addPrice" required>
-					<input type="number" class="adminInput" placeholder="Amount" ng-model="addAmount">
+					<input type="number" class="adminInput" placeholder="Pris" ng-model="addPrice" required>
+					<input type="number" class="adminInput" placeholder="Antal" ng-model="addAmount">
 
 					<button type="submit" value="OK" ng-disabled="adminForm.$invalid">OK</button>
+					<button type="button" value="Clear" ng-click=clearForm();>Clear</button>
 				</div>
 			</form>
 		</div>
@@ -69,7 +70,7 @@
 					</thead>
 
 						<tbody>
-							<form>
+							<form name="updateForm">
 								<tr ng-repeat="x in movies | filter:search">
 									<td style="display:none" id="movieID" ng-model="id" >{{x.id}}</td>
 
@@ -83,7 +84,8 @@
 									<td ng-show="editorEnable">	<input type="number" style="width: 60px;" placeholder="{{x.length}}" ng-model="newLength"></td>
 
 									<td ng-hide="editorEnable">{{x.release_year}}</td>
-									<td ng-show="editorEnable"><input type="number" style="width: 60px;" minlength="4" maxlength="4" placeholder="{{x.release_year}}" ng-model="newYear"></td>
+									<td ng-show="editorEnable"><input type="number" style="width: 60px;" minlength="4" maxlength="4" min="1900" max={{year}} placeholder="{{x.release_year}}" ng-model="newYear"></td>
+									<!-- <p ng-show="updateForm.newYear.$invalid && !updateForm.newYear.$pristine" class="help-block">Skriv in utgivningsår mellan 1900-2016</p> -->
 
 									<td ng-hide="editorEnable"> {{x.synopsis}} </td>
 									<td ng-show="editorEnable">
@@ -124,7 +126,7 @@
 					</table>
 				</div>
 
-	<div id="footer"><a href="index.html">Home</a> | About | &copy 2016 movio.se</div>
+	<div id="footer"><a href="index.html">Home</a> | About | &copy 2016 movios.se</div>
 
 </body>
 </html>

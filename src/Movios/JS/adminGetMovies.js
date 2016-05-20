@@ -3,7 +3,9 @@
  */
 var app = angular.module('admin', []);
 app.controller('mainControl', function($http, $scope, $filter){
-
+    var currentYear = $filter('date')(new Date(),'yyyy');
+    $scope.year = currentYear;
+    
     var urlBase="http://localhost:8080/api/movies/";
     $scope.genres = ["Drama", "Comedy" ,"Action", "Horror", "Fantasy", "Sci-Fi", "Animation"];
 
@@ -14,6 +16,19 @@ app.controller('mainControl', function($http, $scope, $filter){
             $scope.movies = data;
 
         });
+    };
+
+    $scope.clearForm = function(){
+        console.log("clearForm");
+        $scope.addTitle = "";
+        $scope.addCover = "";
+        $scope.addLength = "";
+        $scope.addYear = "";
+        $scope.addSynopsis = "";
+        $scope.addPrice = "";
+        $scope.addAmount = "";
+        $('select').val('');
+
     };
 
     $scope.submitForm = function(){
@@ -37,9 +52,10 @@ app.controller('mainControl', function($http, $scope, $filter){
                 $scope.addLength = "";
                 $scope.addYear = "";
                 $scope.addSynopsis = "";
-                $scope.addGenre = "";
                 $scope.addPrice = "";
                 $scope.addAmount = "";
+                $('select').val('');
+
                 getAllMovies();
             })
                 .error(function() {
