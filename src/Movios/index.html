@@ -66,7 +66,7 @@
 		<nav class="navbar navbar">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="" ng-click="home()">Movios</a>
+					<a class="navbar-brand" href="" ng-click="hideAll(); welcomeTxt = false">Movios</a>
 				</div>
 				<ul class="nav navbar-nav">
 					<li><a href="#" ng-click="hideAll(); aboutLink = true;">Om oss</a></li>
@@ -116,6 +116,9 @@
 		<div ng-include="'HTML/cart.html'" ng-show="cartLink"></div>
 		<div ng-include="'HTML/account.html'" ng-show="accountLink"></div>
 		<div ng-include="'HTML/updateAccount.html'" ng-show="updateAccountLink"></div>
+
+
+		<h2 ng-model="welcome" ng-hide="welcomeTxt">Välkommen till Movios - din laservideobutik på nätet</h2>
 
 	</div>
 

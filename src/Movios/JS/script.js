@@ -132,6 +132,7 @@ app.controller('mainControl', function($http, $scope, $filter){
         $scope.genreLink = false;
         $scope.accountLink = false;
         $scope.updateAccountLink = false;
+        $scope.welcomeTxt = true;
     }
 
     $scope.reloadIndex = function(){
@@ -143,7 +144,6 @@ app.controller('mainControl', function($http, $scope, $filter){
     }
 
     $scope.addToCart = function(movie){
-        $scope.sum += movie.price;
         var found = false;
 
         $scope.cart.forEach(function (item) {
@@ -152,7 +152,8 @@ app.controller('mainControl', function($http, $scope, $filter){
                     found = true;
                     alert("Det finns inte fler varor i lagret");
 
-                }else if(item.quantity <= movie.amount){
+                }else if(item.quantity < movie.amount){
+                    $scope.sum += movie.price;
                     $scope.counter++;
                     item.quantity++;
                     found = true;
@@ -163,6 +164,7 @@ app.controller('mainControl', function($http, $scope, $filter){
         if(!found) {
             $scope.cart.push(angular.extend({quantity: 1}, movie));
             $scope.counter++;
+            $scope.sum += movie.price;
 
         }
     };
@@ -179,7 +181,6 @@ app.controller('mainControl', function($http, $scope, $filter){
             movie.quantity -=1;
             $scope.counter -=1;
             $scope.sum -= movie.price;
-
         }
 
     };
