@@ -1,7 +1,5 @@
 package com.movios.controllers;
 
-import com.movios.models.ModelExceptions.InvalidYearFormatException;
-
 import java.util.regex.Pattern;
 
 /**
