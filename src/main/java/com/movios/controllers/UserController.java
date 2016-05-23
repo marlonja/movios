@@ -37,4 +37,10 @@ public class UserController {
     public ResponseEntity<ArrayList<UserModel>> getAll() {
         return new ResponseEntity<ArrayList<UserModel>>(userService.readAllUsers(), HttpStatus.OK);
     }
+
+    @CrossOrigin
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
+    public void updateUser(@PathVariable Long id, @RequestBody UserModel userModel) {
+        userService.saveUser(userModel);
+    }
 }

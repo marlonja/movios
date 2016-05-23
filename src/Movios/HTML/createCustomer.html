@@ -60,7 +60,7 @@
                     </div>
 
                     <!-- LAST NAME -->
-                    <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.lastName.$pristine }">
                         <label>Efternamn</label>
                         <input type="text" name="lastName" class="form-control" ng-model="user.lastName" required>
                         <p ng-show="userForm.lastName.$invalid && !userForm.lastName.$pristine" class="help-block">Skriv in ditt efternamn</p>

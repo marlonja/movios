@@ -64,8 +64,6 @@ app.controller('mainControl', function($http, $scope, $filter){
     $scope.checkLogin = function(){
         getEmailFromInput = $scope.email;
         getPasswordFromInput = $scope.password;
-        console.log(getEmailFromInput);
-        console.log(getPasswordFromInput);        
         var boolean = false;
         $http.get(urlUser).success(function(data){
 
@@ -100,6 +98,29 @@ app.controller('mainControl', function($http, $scope, $filter){
         });
 
     };
+
+    $scope.updateUserForm = function(user, newFirstName, newLastName, newEmail, newPassword, newAddress, newZipCode, newCity){
+        console.log(user);
+
+            $http.put(urlUser+user.id,{
+                id: user.id,
+                address: newAddress,
+                city: newCity,
+                email: newEmail,
+                password: newPassword,
+                first_name: newFirstName,
+                last_name: newLastName,
+                zip_code: newZipCode
+
+            }).success(function(){
+                alert("Updaterat");
+                console.log(newFirstName);
+            }).error(function() {
+                alert('Error creating data');
+            });
+
+    };
+
 
     $scope.hideAll = function(){
         $scope.hideContainer = false;

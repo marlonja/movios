@@ -1,68 +1,62 @@
-<h1>ÄNDRA KONTO</h1>
-<hr>
-<form name="userForm" ng-submit="submitForm()" novalidate>
+    <h1>ÄNDRA KONTO</h1>
+    <hr>
+    <div class="login-container">
+            <div class="form-box">
+                <form name="userForm">
 
-    <!-- FIRST NAME -->
-    <div class="form-group" ng-class="{ 'has-error' : userForm.firstName.$invalid && !userForm.firstName.$pristine }">
-        <label>Förnamn</label>
-        <p ng-hide="editorEnable">{{userObj.first_name}}</p>
-        <input ng-show="editorEnable" type="text" name="firstName" placeholder="{{userObj.first_name}}" class="form-control" ng-model="user.firstName" required>
-        <p ng-show="userForm.firstName.$invalid && !userForm.firstName.$pristine" class="help-block">Skriv in ditt förnamn.</p>
-    </div>
+                    <!-- FIRST NAME -->
+                    <div class="form-group">
+                        <label>Förnamn</label>
+                        <p ng-hide="editorEnable"><em>{{ userObj.first_name }}</em></p>
+                        <input ng-show="editorEnable" type="text" name="firstName" ng-value="userObj.first_name" class="form-control" ng-model="newFirstName" required>
+                    </div>
 
-    <!-- LAST NAME -->
-    <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
-        <label>Efternamn</label>
-        <p ng-hide="editorEnable">{{userObj.last_name}}</p>
-        <input ng-show="editorEnable" type="text" name="lastName" class="form-control" ng-model="user.lastName" required>
-        <p ng-show="userForm.lastName.$invalid && !userForm.lastName.$pristine" class="help-block">Skriv in ditt efternamn</p>
-    </div>
+                    <!-- LAST NAME -->
+                    <div class="form-group" >
+                        <label>Efternamn</label>
+                        <p ng-hide="editorEnable"><em>{{ userObj.last_name }}</em></p>
+                        <input ng-show="editorEnable" type="text" name="lastName" ng-value="userObj.last_name" class="form-control" ng-model="newLastName" required>
+                    </div>
 
-    <!-- EMAIL -->
-    <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
-        <label>Email</label>
-        <p ng-hide="editorEnable">{{userObj.email}}</p>
-        <input ng-show="editorEnable" type="email" name="email" class="form-control" ng-model="user.email" required>
-        <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Skriv in en email-adress</p>
-    </div>
+                    <!-- EMAIL -->
+                    <div class="form-group">
+                        <label>Email</label>
+                        <p ng-hide="editorEnable"><em>{{ userObj.email }}</em></p>
+                        <input ng-show="editorEnable" type="email" name="email" ng-value="userObj.email" class="form-control" ng-model="newEmail" required>
+                    </div>
 
-    <!-- PASSWORD -->
-    <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
-        <label>Password</label>
-        <p ng-hide="editorEnable">{{userObj.password}}</p>
+                    <!-- PASSWORD -->
+                    <div class="form-group">
+                        <label>Password</label>
+                        <p ng-hide="editorEnable"><em>********</em></p>
+                        <input ng-show="editorEnable" type="password" min="6" max="20" ng-value="userObj.password" name="password" class="form-control" ng-model="newPassword" required>
+                    </div>
 
-        <input ng-show="editorEnable" type="password" min="6" max="20" name="password" class="form-control" ng-model="user.password" required>
-        <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block">Skriv in lösenord.</p>
-    </div>
+                    <!-- ADDRESS -->
+                    <div class="form-group">
+                        <label>Adress</label>
+                        <p ng-hide="editorEnable"><em>{{ userObj.address }}</em></p>
+                        <input ng-show="editorEnable" type="text" name="address" ng-value="userObj.address" class="form-control" ng-model="newAddress" required>
+                    </div>
 
-    <!-- ADDRESS -->
-    <div class="form-group" ng-class="{ 'has-error' : userForm.address.$invalid && !userForm.address.$pristine }">
-        <label>Adress</label>
-        <p ng-hide="editorEnable">{{userObj.address}}</p>
+                    <!-- ZIPCODE -->
+                    <div class="form-group">
+                        <label>Post NR</label>
+                        <p ng-hide="editorEnable"><em>{{ userObj.zip_code }}</em></p>
+                        <input ng-show="editorEnable" type="number" name="zipCode" ng-value="userObj.zip_code" class="form-control" maxlength="5" minlength="5"
+                               ng-model="newZipCode" required>
+                    </div>
 
-        <input ng-show="editorEnable" type="text" name="address" class="form-control" ng-model="user.address" required>
-        <p ng-show="userForm.address.$invalid && !userForm.address.$pristine" class="help-block">Skriv in din adress.</p>
-    </div>
+                    <!-- CITY -->
+                    <div class="form-group">
+                        <label>City</label>
+                        <p ng-hide="editorEnable"><em>{{ userObj.city }}</em></p>
+                        <input ng-show="editorEnable" type="text" name="city" ng-value="userObj.city" class="form-control" ng-model="newCity" required>
+                    </div>
 
-    <!-- ZIPCODE -->
-    <div class="form-group" ng-class="{ 'has-error' : userForm.zipCode.$invalid && !userForm.zipCode.$pristine }">
-        <label>Post NR</label>
-        <p ng-hide="editorEnable">{{userObj.zip_code}}</p>
-        <input ng-show="editorEnable" type="number" name="zipCode" class="form-control" maxlength="5" minlength="5"
-               ng-model="user.zipCode" required>
-        <p ng-show="userForm.zipCode.$invalid && !userForm.zipCode.$pristine" class="help-block">Skriv in ditt post nr med 5 siffror.</p>
-    </div>
+                    <button type="submit" class="btn btn-primary" ng-click="updateUserForm(userObj, newFirstName, newLastName, newEmail, newPassword, newAddress, newZipCode, newCity)" >OK</button>
+                    <button type="submit" class="btn btn-primary"  ng-click="editorEnable = !editorEnable">Update</button>
+                </form>
+            </div>
+        </div>
 
-    <!-- CITY -->
-    <div class="form-group" ng-class="{ 'has-error' : userForm.city.$invalid && !userForm.city.$pristine }">
-        <label>City</label>
-        <p ng-hide="editorEnable">{{userObj.city}}</p>
-
-        <input ng-show="editorEnable" type="text" name="city" class="form-control" ng-model="user.city" required>
-        <p ng-show="userForm.city.$invalid && !userForm.city.$pristine" class="help-block">Skriv in stad.</p>
-    </div>
-
-    <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">OK</button>
-    <button type="submit" class="btn btn-primary"  ng-click="editorEnable = !editorEnable">Update</button>
-
-</form>
