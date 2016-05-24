@@ -101,6 +101,36 @@ app.controller('mainControl', function($http, $scope, $filter){
 
     $scope.updateUserForm = function(user, newFirstName, newLastName, newEmail, newPassword, newAddress, newZipCode, newCity){
         console.log(user);
+        
+        if(newFirstName == undefined){
+            newFirstName = user.first_name;
+        }
+        if(newLastName == undefined){
+            newLastName = user.last_name;
+        }
+        if(newEmail == undefined){
+            newEmail = user.email;
+        }
+        if(newPassword == undefined){
+            newPassword = user.password;
+        }
+        if(newAddress == undefined){
+            newAddress = user.address;
+        }
+        if(newZipCode == undefined){
+            newZipCode = user.zip_code;
+        }
+        if(newCity == undefined){
+            newCity = user.city;
+        }
+
+        $scope.userObj.first_name = newFirstName;
+        $scope.userObj.last_name = newLastName;
+        $scope.userObj.email = newEmail;
+        $scope.userObj.password = newPassword;
+        $scope.userObj.address = newAddress;
+        $scope.userObj.zip_code = newZipCode;
+        $scope.userObj.city = newCity;
 
             $http.put(urlUser+user.id,{
                 id: user.id,
@@ -113,8 +143,7 @@ app.controller('mainControl', function($http, $scope, $filter){
                 zip_code: newZipCode
 
             }).success(function(){
-                alert("Updaterat");
-                console.log(newFirstName);
+
             }).error(function() {
                 alert('Error creating data');
             });

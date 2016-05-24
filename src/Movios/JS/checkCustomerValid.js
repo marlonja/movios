@@ -15,6 +15,7 @@ var validationApp = angular.module('validationApp', []);
                         zip_code: $scope.user.zipCode
 
                     }).success(function(){
+                       
                         window.location.href = "../index.html"
                         })
                         .error(function() {

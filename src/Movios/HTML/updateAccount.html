@@ -54,8 +54,8 @@
                         <input ng-show="editorEnable" type="text" name="city" ng-value="userObj.city" class="form-control" ng-model="newCity" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" ng-click="updateUserForm(userObj, newFirstName, newLastName, newEmail, newPassword, newAddress, newZipCode, newCity)" >OK</button>
-                    <button type="submit" class="btn btn-primary"  ng-click="editorEnable = !editorEnable">Update</button>
+                    <button type="submit" class="btn btn-primary" ng-show="editorEnable" ng-click="updateUserForm(userObj, newFirstName, newLastName, newEmail, newPassword, newAddress, newZipCode, newCity); editorEnable = !editorEnable" >OK</button>
+                    <button type="submit" class="btn btn-primary" ng-hide="editorEnable"  ng-click="editorEnable = !editorEnable">Uppdatera</button>
                 </form>
             </div>
         </div>
