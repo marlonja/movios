@@ -15,7 +15,6 @@ var validationApp = angular.module('validationApp', []);
                         zip_code: $scope.user.zipCode
 
                     }).success(function(){
-                        alert("Du är redo att logga in");
                         window.location.href = "../index.html"
                         })
                         .error(function() {

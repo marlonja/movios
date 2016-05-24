@@ -33,16 +33,16 @@
 				<div class="input-fields">
 					<h1>LÄGG TILL FILM</h1>
 					<hr>
-					<input type="url" class="adminInput" placeholder="Länk till bild" ng-model="addCover" required>
+					<input type="text" class="adminInput" placeholder="Länk till bild" ng-model="addCover" required>
 					<input type="text" class="adminInput" placeholder="Titel" ng-model="addTitle" id="titleForm" required>
-					<input type="number" class="adminInput" placeholder="Längd" ng-model="addLength" required>
+					<input type="number" class="adminInput" placeholder="Längd" ng-model="addLength" min="0" max="5000" required>
 					<input type="number" class="adminInput" placeholder="Utgivningsår" minlength="4" maxlength="4" min="1900" max={{year}} ng-model="addYear" required>
 					<textarea class="txtArea" class="adminInput" placeholder="Synopsis" ng-model="addSynopsis" required> </textarea>
 					<select ng-model="selectedGenre" ng-options="x for x in genres" required>
 						<option value="">Genre</option>
 					</select>
-					<input type="number" class="adminInput" placeholder="Pris" ng-model="addPrice" required>
-					<input type="number" class="adminInput" placeholder="Antal" ng-model="addAmount">
+					<input type="number" class="adminInput" placeholder="Pris" ng-model="addPrice" min="0" max="100000" required>
+					<input type="number" class="adminInput" placeholder="Antal" ng-model="addAmount" min="0" max="100" required>
 
 					<button type="submit" value="OK" ng-disabled="adminForm.$invalid">OK</button>
 					<button type="button" value="Clear" ng-click=clearForm();>Clear</button>
