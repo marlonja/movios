@@ -81,7 +81,7 @@
 									<td ng-show="editorEnable"><input type="text" style="width: 100px;" ng-value="x.title" ng-model="newTitle"></td>
 
 									<td ng-hide="editorEnable">{{x.length}}</td>
-									<td ng-show="editorEnable">	<input type="number" style="width: 60px;" ng-value="x.length" ng-model="newLength"></td>
+									<td ng-show="editorEnable">	<input type="number" style="width: 60px;" min="0" max="5000" ng-value="x.length" ng-model="newLength"></td>
 
 									<td ng-hide="editorEnable">{{x.release_year}}</td>
 									<td ng-show="editorEnable"><input type="number" style="width: 60px;" minlength="4" maxlength="4" min="1900" max={{year}} ng-value="x.release_year" ng-model="newYear" required></td>
@@ -100,10 +100,10 @@
 									</td>
 
 									<td ng-hide="editorEnable"> {{x.price}}</td>
-									<td ng-show="editorEnable"><input type="number" style="width: 50px;" ng-value="x.price" ng-model="newPrice"></td>
+									<td ng-show="editorEnable"><input type="number" style="width: 50px;" min="0" max="100000" ng-value="x.price" ng-model="newPrice"></td>
 
 									<td ng-hide="editorEnable"> {{x.amount}} </td>
-									<td ng-show="editorEnable"><input type="number" style="width: 30px;" ng-value="x.amount" ng-model="newAmount"></td>
+									<td ng-show="editorEnable"><input type="number" style="width: 30px;" min="0" max="100" ng-value="x.amount" ng-model="newAmount"></td>
 
 									<input type="hidden" ng-model="newCreationDate" ng-value="x.creation_date">
 

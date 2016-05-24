@@ -51,7 +51,7 @@ app.controller('mainControl', function($http, $scope, $filter){
         $http.get(urlBase).success(function(data){
             var list = [];
             for (i = 0; i<data.length; i++){
-                if(data[i].creation_date > lastMonth){
+                if(data[i].creation_date > lastMonth && data[i].amount > 0){
                     list.push(data[i])
                 }
             }

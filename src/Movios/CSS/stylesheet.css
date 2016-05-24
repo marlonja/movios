@@ -1,6 +1,7 @@
 body{
 	font-family: Montserrat !important;
 
+
 }
 
 .container-fluid{
@@ -167,16 +168,13 @@ a:hover {
 	width:40%;
 }
 
-.modalSynopsis{
-	width: 60%;
-	left: 130px;
-	position: relative;
+.modal-footer{
+	clear:both;
 }
 
-.modalSynopsis span {
-	position: absolute;
-	bottom: 0;
-	right: 0;
+.modalCover{
+	float: left;
+	margin: 10px;
 }
 
 .form-group{
