@@ -110,9 +110,8 @@ a:hover {
 
 #login{
 	float:right;
-	width:10%;
+	width:20%;
 	text-align: left;
-
 }
 
 #login a{
@@ -129,6 +128,10 @@ a:hover {
 
 #loginFields{
 	height: 30%;
+}
+
+#loginFields input{
+	max-width: 50%;
 }
 
 #cartIcon{
